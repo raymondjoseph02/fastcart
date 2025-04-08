@@ -1,0 +1,21 @@
+@import "tailwindcss";
+@layer utilities {
+  .button {
+    @apply inline-flex w-full     items-center whitespace-nowrap rounded-sm justify-center  text-sm tracking-[-2%] sm:text-base font-normal text-center transition cursor-pointer;
+  }
+  .button_primary {
+    @apply bg-[#1E2753] text-[#FFFFFF] gap-[4px] border border-[#979797] capitalize  py-3;
+  }
+  .button_outline {
+    @apply bg-transparent text-[#1E5EFF] gap-2.5 border border-[#D7DBEC] capitalize  py-3;
+  }
+  .button_bg_white {
+    @apply bg-[#FFFFFF] text-[#1E5EFF] gap-[4px] border border-[#D7DBEC] capitalize  py-2;
+  }
+  .button_bg_white {
+    @apply bg-[#1E5EFF] text-[#FFFFFF] gap-[4px] border border-[#D7DBEC] capitalize  py-2;
+  }
+  .h1 {
+    @apply text-[#131523] sm:text-xl text-2xl font-bold;
+  }
+}
