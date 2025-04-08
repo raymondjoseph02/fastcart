@@ -4,43 +4,45 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     colors: {
-        current: "currentColor", // for flexibility
-        white: "#FFFFFF", // white color
-        black: "#000000", // black color
+      current: "currentColor", // for flexibility
+      white: "#FFFFFF", // white color
+      black: "#000000", // black color
 
-        primary: {
-          200: "#1E2753", // dark blue for side bar
-          100: "#1E5EFF", // Primary blue color
-          50: "#D9E4FF", // Lighter blue, used for charts
-        },
-
-        green: {
-          200: "#06A561", // green for text color
-          100: "#1FD286", // Green accent color
-          50: "#C4F8E2", // Light green background shade
-        },
-
-        gray: {
-          100: "#5A607F", // Light gray for background
-          200: "#E4E4E4", // Subtle gray borders
-          300: "#131523", // Mid gray for text or borders
-          400: "#A1A7C4", // Medium gray for secondary text
-        },
-
-        red: {
-          100: "#F0142F", // Red accent color for notifications or alerts
-        },
-
-        purple: {
-          100: "#8B4FFF", // Purple accent for headings or buttons
-        },
-
-        yellow: {
-          100: "#FFD700", // Yellow for highlights or icons
-        },
+      primary: {
+        300: "#1E2753", // dark blue for side bar
+        200: "#1E5EFF", // Primary blue color
+        100: "#D9E4FF", // Lighter blue, used for charts
+        50: "#D9E1EC", // Lightest blue, used for inputs
       },
+
+      green: {
+        200: "#06A561", // green for text color
+        100: "#1FD286", // Green accent color
+        50: "#C4F8E2", // Light green background shade
+      },
+
+      gray: {
+        50: "#F5F6FA", // Lightest gray
+        100: "#5A607F", // Light gray for background
+        200: "#E4E4E4", // Subtle gray borders
+        300: "#131523", // Mid gray for text or borders
+        400: "#A1A7C4", // Medium gray for secondary text
+      },
+
+      red: {
+        100: "#F0142F", // Red accent color for notifications or alerts
+      },
+
+      purple: {
+        100: "#8B4FFF", // Purple accent for headings or buttons
+      },
+
+      yellow: {
+        100: "#FFD700", // Yellow for highlights or icons
+      },
+    },
+
     extend: {
-   
       borderWidth: {
         DEFAULT: "1px",
         0: "0",
@@ -49,27 +51,34 @@ export default {
         4: "4px",
         8: "8px",
       },
+      boxShadow: {
+        "bg-auth": " 0px 1px 4px 0px #15223214",
+      },
+      fontFamily: {
+        inter: ["Inter", "sans-serif"],
+      },
+      spacing: {
+        // change 863 to whatever half of the max content width you want for wide screens is
+        contained: "calc(50vw - 863px)",
+        fullheight: "calc(var(--vh, 1vh) * 100)", // --vh var set on html tag by setDocHeight() in app.js
+        gutter: "5vw",
+        13: "3.125rem",
+        15: "3.75rem",
+        18: "4.5rem",
+        19: "4.75rem",
+        22: "5.5rem",
+        25: "6.25rem",
+        75: "18.75rem",
+        114: "28.5rem",
+        125: "31.25rem",
+      },
     },
     zIndex: {
       "-1": "-1",
       100: 100,
       1000: 1000,
     },
-    spacing: {
-      // change 863 to whatever half of the max content width you want for wide screens is
-      contained: "calc(50vw - 863px)",
-      fullheight: "calc(var(--vh, 1vh) * 100)", // --vh var set on html tag by setDocHeight() in app.js
-      gutter: "5vw",
-      13: "3.125rem",
-      15: "3.75rem",
-      18: "4.5rem",
-      19: "4.75rem",
-      22: "5.5rem",
-      25: "6.25rem",
-      75: "18.75rem",
-      114: "28.5rem",
-      125: "31.25rem",
-    },
+
     fontSize: {
       xs: ["0.75rem", { lineHeight: "1.05rem" }],
       sm: ["0.875rem", { lineHeight: "1.225rem" }],
