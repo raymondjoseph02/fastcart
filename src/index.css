@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@config "../tailwind.config.js";
+
 @layer utilities {
   .button {
     @apply inline-flex w-full     items-center whitespace-nowrap rounded-sm justify-center  text-sm tracking-[-2%] sm:text-base font-normal text-center transition cursor-pointer;
@@ -17,5 +19,17 @@
   }
   .h1 {
     @apply text-[#131523] sm:text-xl text-2xl font-bold;
+  }
+  .auth_label {
+    @apply text-sm text-gray-100;
+  }
+  .auth_input {
+    @apply border outline-none mt-1 border-primary-50 rounded py-3 px-4 w-full placeholder:text-gray-400;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-gray-50 font-inter;
   }
 }
