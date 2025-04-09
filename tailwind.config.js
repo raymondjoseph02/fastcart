@@ -11,6 +11,7 @@ export default {
       primary: {
         300: "#1E2753", // dark blue for side bar
         200: "#1E5EFF", // Primary blue color
+        150: "#D7DBEC", // light blue for checkbox border
         100: "#D9E4FF", // Lighter blue, used for charts
         50: "#D9E1EC", // Lightest blue, used for inputs
       },

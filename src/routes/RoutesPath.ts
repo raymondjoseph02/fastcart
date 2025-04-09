@@ -2,9 +2,9 @@
 
 export const RoutePaths = {
   ROOT: "/",
-  LOG_IN: "/log-in",
+  LOG_IN: "/login",
   REGISTER: "/register",
-  PasswordReset: "/password-reset",
-  ConfirmEmail: "/confirm-email",
-  RegisterationComplete: "/registeration-complete",
+  PASSWORD_RESET: "/password-reset",
+  CONFIRM_EMAIL: "/confirm-email",
+  REGISTERATION_COMPLETE:"/registeration-complete",
 };

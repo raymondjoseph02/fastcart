@@ -1,4 +1,6 @@
 import AuthButton from "../components/common/AuthButton"
+import { Link } from "react-router-dom"
+import { RoutePaths } from "../routes/RoutesPath"
 
 function PasswordReset() {
   return (
@@ -26,11 +28,13 @@ function PasswordReset() {
             required
           />
         </div>
-        <AuthButton />
-        <hr className="mt-[48px] border border-gray-200"/>
-        <p className="my-[24px] text-gray-100 text-[14px] text-center">Remembered your Password?</p>
-        <AuthButton text="Back to Sign in" bg="bg-green-500" textColor="text-primary-200"/>
+        <AuthButton text="Reset Password" className="btn-auth-solid"/>
       </form>
+      <hr className="text-primary-150 w-full h-[1px] my-4 sm:my-6" />
+        <p className="my-[24px] text-gray-100 text-[14px] text-center">Remembered your Password?</p>
+        <Link to={RoutePaths.LOG_IN}>
+            <AuthButton text="Back to Sign in" className="btn-auth-outline"/>
+        </Link>
     </div>
   </div>
   )

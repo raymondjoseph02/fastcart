@@ -13,9 +13,9 @@ function RegisterationComplete() {
           <p className="text-gray-100">Check your email inbox and confirm your account</p>
         </span>
       </div>
-        <hr className="mt-[48px] border border-gray-200"/>
+      <hr className="text-primary-150 w-full h-[1px] my-4 sm:my-6" />
         <p className="my-[24px] text-gray-100 text-[14px] text-center">Didn’t receive any mail?</p>
-        <AuthButton text="Resend Confirmation" bg="bg-green-500" textColor="text-primary-200"/>
+        <AuthButton text="Resend Confirmation" className="btn-auth-solid"/>
     </div>
   </div>
   )

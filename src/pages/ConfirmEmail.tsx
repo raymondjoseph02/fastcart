@@ -26,10 +26,10 @@ function ConfirmEmail() {
             required
           />
         </div>
-        <AuthButton text="Confirm Email" />
-        <hr className="mt-[48px] border border-gray-200"/>
+        <AuthButton text="Confirm Email" className="btn-auth-solid" />
+        <hr className="text-primary-150 w-full h-[1px] my-4 sm:my-6" />
         <p className="my-[24px] text-gray-100 text-[14px] text-center">Haven’t received your code?</p>
-        <AuthButton text="Resend Code" bg="bg-green-500" textColor="text-primary-200"/>
+        <AuthButton text="Resend Code" className="btn-auth-outline"/>
       </form>
     </div>
   </div>

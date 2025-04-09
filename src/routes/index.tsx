@@ -4,6 +4,7 @@ import Login from "../pages/Login";
 import PasswordReset from "../pages/PasswordReset";
 import ConfirmEmail from "../pages/ConfirmEmail";
 import RegisterationComplete from "../pages/RegisterationComplete";
+import Register from "../pages/Register";
 
 export const routes = createBrowserRouter([
   {
@@ -15,15 +16,19 @@ export const routes = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: RoutePaths.PasswordReset,
+    path: RoutePaths.REGISTER,
+    element: <Register />,
+  },
+  {
+    path: RoutePaths.PASSWORD_RESET,
     element: <PasswordReset />,
   },
   {
-    path: RoutePaths.ConfirmEmail,
+    path: RoutePaths.CONFIRM_EMAIL,
     element: <ConfirmEmail />,
   },
   {
-    path: RoutePaths.RegisterationComplete,
+    path: RoutePaths.REGISTERATION_COMPLETE,
     element: <RegisterationComplete />,
   },
 ]);
