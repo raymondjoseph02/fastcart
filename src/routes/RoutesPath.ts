@@ -7,4 +7,5 @@ export const RoutePaths = {
   PASSWORD_RESET: "/password-reset",
   CONFIRM_EMAIL: "/confirm-email",
   REGISTERATION_COMPLETE:"/registeration-complete",
+
 };

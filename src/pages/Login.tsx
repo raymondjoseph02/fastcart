@@ -82,6 +82,7 @@ const Login = () => {
         <span className="flex justify-center text-center">
           <Link
             to={RoutePaths.PASSWORD_RESET}
+
             className="text-sm text-primary-200 hover:underline "
           >
             Forgot your password?
