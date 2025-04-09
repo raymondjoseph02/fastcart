@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { RoutePaths } from "../routes/RoutesPath";
-import { Check, Facebook, Google } from "../assets/svg/general";
+import { Facebook, Google } from "../assets/svg/general";
 import { FormEvent, useState } from "react";
 import { ClipLoader } from "react-spinners";
 import AuthHeader from "../components/auth/AuthHeader";
 
-const Login = () => {
+const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -23,14 +23,14 @@ const Login = () => {
     <div className="w-full sm:min-h-screen flex justify-center items-center p-5">
       <div className="shadow-bg-auth max-w-[540px] w-full rounded-md bg-white px-6 py-10 sm:px-[60px] sm:py-12  ">
         <AuthHeader
-          title="Sign In"
-          desc="New to Our Product?"
-          link={RoutePaths.REGISTER}
-          linkText={"Create an Account"}
+          title="Create an Account"
+          desc="Have an Account?"
+          link={RoutePaths.LOG_IN}
+          linkText={"Sign In"}
         />
 
-        <form className="mb-6" onSubmit={handleSubmit}>
-          <div className="mb-4 sm:mb-6">
+        <form className="mb-6 space-y-4 sm:space-y-6" onSubmit={handleSubmit}>
+          <div>
             <label htmlFor="email" className=" auth_label">
               Email
             </label>
@@ -44,54 +44,40 @@ const Login = () => {
             />
           </div>
 
-          <div className="mb-4">
+          <div>
             <label htmlFor="password" className="auth_label">
               Password
             </label>
             <input
               type="password"
               className="auth_input"
-              placeholder="Enter Password"
+              placeholder="Create Password"
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
 
-          <div className="flex items-center mb-4 transition-all ease-in gap-x-2 ">
-            <input
-              type="checkbox"
-              id="confirm-request"
-              className="relative w-5 outline-none h-5 border border-primary-150 rounded appearance-none peer shrink-0  checked:bg-primary-300 checked:border-0 hover:cursor-pointer"
-            />
-            <Check className="absolute hidden w-3 h-3 mt-[0.7px] ml-[4.55px] outline-none pointer-events-none peer-checked:block stroke-white " />
-
-            <label
-              htmlFor="confirm-request"
-              className="text-sm text-gray-100 cursor-pointer hover:scale-[103%] transition-transform duration-300 ease-linear"
-            >
-              Keep me signed in
-            </label>
-          </div>
-
           <button className="btn-auth-solid">
-            {loading ? <ClipLoader size={15} color="white" /> : "Sign in"}
+            {loading ? (
+              <ClipLoader size={15} color="white" />
+            ) : (
+              "Create Account"
+            )}
           </button>
         </form>
 
-        <span className="flex justify-center text-center">
-          <Link
-            to={RoutePaths.FORGOT_PASSWORD}
-            className="text-sm text-primary-200 hover:underline "
-          >
-            Forgot your password?
+        <span className="flex gap-1 justify-center flex-col text-center text-sm">
+          <p className="text-gray-100">By creating account, you agree to our</p>
+          <Link to={""} className=" text-primary-200 hover:underline ">
+            Terms of Service
           </Link>
         </span>
 
         <hr className="text-primary-150 w-full h-[1px] my-4 sm:my-6" />
 
         <p className="text-sm text-gray-100 text-center mb-5 sm:mb-[35px]">
-          Or sign in using:
+          Or create an account using:
         </p>
 
         <button className="btn-auth-outline mb-3">
@@ -105,4 +91,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
