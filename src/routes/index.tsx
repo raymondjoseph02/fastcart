@@ -1,6 +1,9 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import { RoutePaths } from "./RoutesPath";
 import Login from "../pages/Login";
+import PasswordReset from "../pages/PasswordReset";
+import ConfirmEmail from "../pages/ConfirmEmail";
+import RegisterationComplete from "../pages/RegisterationComplete";
 
 export const routes = createBrowserRouter([
   {
@@ -11,4 +14,17 @@ export const routes = createBrowserRouter([
     path: RoutePaths.LOG_IN,
     element: <Login />,
   },
+  {
+    path: RoutePaths.PasswordReset,
+    element: <PasswordReset />,
+  },
+  {
+    path: RoutePaths.ConfirmEmail,
+    element: <ConfirmEmail />,
+  },
+  {
+    path: RoutePaths.RegisterationComplete,
+    element: <RegisterationComplete />,
+  },
 ]);
+
