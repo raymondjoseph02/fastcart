@@ -1,15 +1,23 @@
-import { createBrowserRouter, Navigate } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import { RoutePaths } from "./RoutesPath";
 import Login from "../pages/Login";
 import PasswordReset from "../pages/PasswordReset";
 import ConfirmEmail from "../pages/ConfirmEmail";
 import RegisterationComplete from "../pages/RegisterationComplete";
 import Register from "../pages/Register";
+import { DashboardLayout } from "../layout/dashboardLayout";
+import Dashboard from "../pages/Dashboard";
 
 export const routes = createBrowserRouter([
   {
     path: RoutePaths.ROOT,
-    element: <Navigate to={RoutePaths.LOG_IN} />,
+    element: <DashboardLayout />,
+    children: [
+      {
+        path: RoutePaths.DASHBOARD,
+        element: <Dashboard />,
+      },
+    ],
   },
   {
     path: RoutePaths.LOG_IN,
