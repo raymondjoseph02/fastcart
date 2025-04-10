@@ -26,13 +26,13 @@
     @apply text-sm text-gray-100;
   }
   .auth_input {
-    @apply border outline-none mt-1 border-primary-50 rounded py-3 px-4 w-full placeholder:text-gray-400;
+    @apply w-full px-4 py-3 mt-1 border rounded outline-none border-primary-100 placeholder:text-gray-400;
   }
   .btn-auth-outline {
     @apply py-3 text-center w-full  rounded border border-primary-150 text-primary-200 flex items-center justify-center gap-2.5 hover:bg-gray-50 text-sm xs:text-base px-2 transition-colors duration-300 ease-linear;
   }
   .btn-auth-solid {
-    @apply bg-primary-300 hover:bg-primary-300/90 py-3 text-center w-full text-white rounded text-sm xs:text-base px-2 transition-colors duration-300 ease-linear;
+    @apply w-full px-2 py-3 text-sm text-center text-white transition-colors duration-300 ease-linear rounded bg-primary-300 hover:bg-primary-300/90 xs:text-base;
   }
 }
 
