@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import { RoutePaths } from "./RoutesPath";
 import Login from "../pages/Login";
 import PasswordReset from "../pages/PasswordReset";
@@ -9,6 +9,10 @@ import { DashboardLayout } from "../layout/dashboardLayout";
 import Dashboard from "../pages/Dashboard";
 
 export const routes = createBrowserRouter([
+  {
+    path: RoutePaths.ROOT,
+    element: <Navigate to={RoutePaths.LOG_IN} />,
+  },
   {
     path: RoutePaths.ROOT,
     element: <DashboardLayout />,
@@ -28,7 +32,7 @@ export const routes = createBrowserRouter([
     element: <Register />,
   },
   {
-    path: RoutePaths.PASSWORD_RESET,
+    path: RoutePaths.FORGOT_PASSWORD,
     element: <PasswordReset />,
   },
   {
@@ -40,4 +44,3 @@ export const routes = createBrowserRouter([
     element: <RegisterationComplete />,
   },
 ]);
-
