@@ -56,6 +56,7 @@ module.exports = withMT({
       },
       boxShadow: {
         "bg-auth": " 0px 1px 4px 0px #15223214",
+        "top-nav": "0px 1px 4px 0px #15223214",
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"],
