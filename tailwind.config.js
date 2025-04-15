@@ -27,6 +27,7 @@ module.exports = withMT({
       gray: {
         50: "#F5F6FA", // Lightest gray
         100: "#5A607F", // Light gray for background
+        150: "#E6E9F4",
         200: "#E4E4E4", // Subtle gray borders
         300: "#131523", // Mid gray for text or borders
         400: "#A1A7C4", // Medium gray for secondary text
