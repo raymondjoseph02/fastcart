@@ -9,7 +9,7 @@ const OrdersChat = () => {
     console.log(timeSelected);
   }, [timeSelected]);
   return (
-    <div className="px-7 bg-white pt-7 pb-5 max-w-[51.6rem] rounded-md">
+    <div className="px-7 bg-white pt-7 pb-5 w-full rounded-md lg:col-span-2">
       <div className="space-y-6">
         <div className="flex flex-col sm:items-center sm:justify-between sm:flex-row">
           <p className="text-base font-semibold leading-6 text-gray-300 sm:font-bold">

@@ -248,3 +248,75 @@ export const Search = (props: SVGProps<SVGSVGElement>) => (
     ></path>
   </svg>
 );
+
+export const UpArrow = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+    width="13"
+    height="12"
+    fill="none"
+    viewBox="0 0 13 12"
+  >
+    <path
+      fill="currentColor"
+      fillRule="evenodd"
+      d="M3.646 7.854a.5.5 0 0 1-.041-.66l.041-.048 2.5-2.5a.5.5 0 0 1 .66-.041l.048.041 2.5 2.5a.5.5 0 0 1-.66.75l-.048-.042L6.5 5.707 4.354 7.855a.5.5 0 0 1-.66.041z"
+      clipRule="evenodd"
+    ></path>
+  </svg>
+);
+
+export const TotalRevenue = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="29"
+    height="28"
+    fill="none"
+    viewBox="0 0 29 28"
+  >
+    <circle cx="14.5" cy="14" r="14" fill="#ECF2FF"></circle>
+    <path
+      fill="#1E5EFF"
+      fillRule="evenodd"
+      d="M14.5 9.5a.5.5 0 0 1 .5.5v.045c1.097.2 1.945 1.048 1.997 2.1l.003.105h-1c0-.533-.411-1.005-1-1.179v2.474c1.133.207 2 1.104 2 2.205s-.867 1.998-2 2.205V18a.5.5 0 0 1-1 0v-.045c-1.097-.2-1.945-1.047-1.997-2.1L12 15.75h1c0 .533.411 1.005 1 1.179v-2.474c-1.133-.207-2-1.104-2-2.205s.867-1.998 2-2.205V10a.5.5 0 0 1 .5-.5m.5 5.071v2.358c.589-.174 1-.646 1-1.179s-.411-1.005-1-1.179m-2-2.321c0 .533.411 1.005 1 1.179V11.07c-.589.174-1 .646-1 1.179"
+      clipRule="evenodd"
+    ></path>
+  </svg>
+);
+
+export const Cart = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+    width="29"
+    height="28"
+    fill="none"
+    viewBox="0 0 29 28"
+  >
+    <circle cx="14.5" cy="14" r="14" fill="#ECF2FF"></circle>
+    <path
+      fill="#1E5EFF"
+      fillRule="evenodd"
+      d="M12.25 17.5a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5m5 0a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5M10.75 9a.5.5 0 0 1 .304.103l.05.043 1.354 1.354h6.287a.5.5 0 0 1 .46.695L17.85 14.39a1 1 0 0 1-.921.61H12.5v.5l.003.058a.5.5 0 0 0 .439.439L13 16h4.5l.058.003a.5.5 0 0 1 0 .994L17.5 17H13l-.088-.003a1.5 1.5 0 0 1-1.41-1.409L11.5 15.5v-1l.003-.058a.5.5 0 0 1 .04-.147A1 1 0 0 1 11.5 14v-3.043L10.543 10H10a.5.5 0 0 1 0-1zm7.239 2.5H12.5V14h4.429z"
+      clipRule="evenodd"
+    ></path>
+  </svg>
+);
+
+export const ManageIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    fill="none"
+    viewBox="0 0 24 24"
+  >
+    <path
+      fill="currentColor"
+      fillRule="evenodd"
+      d="M13.5 2 16 5l4 .5 2 3-2 3.5 2 3.5-2 3-4 .5-2.5 3h-3L8 19l-4-.5-2-3L4 12 2 8.5l2-3L8 5l2.5-3zm-.938 1.999h-1.125L9.031 6.887l-3.875.483-.806 1.211L6.304 12 4.35 15.418l.806 1.211 3.875.484L11.436 20h1.127l2.406-2.886 3.874-.484.806-1.211L17.696 12l1.953-3.419-.806-1.211-3.874-.483zM12 8a4 4 0 1 1 0 8 4 4 0 0 1 0-8m0 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"
+      clipRule="evenodd"
+    ></path>
+  </svg>
+);
