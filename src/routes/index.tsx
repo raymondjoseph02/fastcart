@@ -7,6 +7,9 @@ import RegisterationComplete from "../pages/RegisterationComplete";
 import Register from "../pages/Register";
 import { DashboardLayout } from "../layout/dashboardLayout";
 import Dashboard from "../pages/Dashboard";
+import Customers from "../pages/customers/Customers";
+import CustomerDetails from "../pages/customers/CustomerDetails";
+import CustomerDetailsForm from "../pages/customers/CustomerDetailsForm";
 
 export const routes = createBrowserRouter([
   {
@@ -20,6 +23,22 @@ export const routes = createBrowserRouter([
       {
         path: RoutePaths.DASHBOARD,
         element: <Dashboard />,
+      },
+      {
+        path: RoutePaths.CUSTOMERS,
+        element: <Customers />,
+      },
+      {
+        path: RoutePaths.NEW_CUSTOMER,
+        element: <CustomerDetailsForm />,
+      },
+      {
+        path: `${RoutePaths.CUSTOMERS}/:id`,
+        element: <CustomerDetails />,
+      },
+      {
+        path: `${RoutePaths.CUSTOMERS}/:id/edit`,
+        element: <CustomerDetailsForm />,
       },
     ],
   },

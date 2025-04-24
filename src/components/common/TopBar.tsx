@@ -10,7 +10,7 @@ import { NavBarProps } from "../../interface/navbar";
 const TopBar = ({ isOpen, toggleSidebar }: NavBarProps) => {
   return (
     <>
-      <div className="bg-[#070B1D] sticky top-0 shadow-top-nav px-5 py-2.5 w-full justify-between flex ">
+      <div className="bg-[#070B1D] z-100 sticky top-0 shadow-top-nav px-5 py-2.5 w-full justify-between flex ">
         <div className="flex items-center gap-25 flex-1">
           <div className=" flex items-center gap-2">
             <button
@@ -33,7 +33,7 @@ const TopBar = ({ isOpen, toggleSidebar }: NavBarProps) => {
           </div>
 
           <div className=" items-center gap-2 lg:w-[50%] hidden lg:flex">
-            <Search />
+            <Search className="text-[#F9F9F9]" />
             <input
               type="search"
               className="outline-none text-sm placeholder:text-white text-gray-50"

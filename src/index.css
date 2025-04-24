@@ -26,7 +26,7 @@
     @apply text-sm text-gray-100;
   }
   .auth_input {
-    @apply w-full px-4 py-3 mt-1 border rounded outline-none border-primary-100 placeholder:text-gray-400;
+    @apply w-full px-4 h-10 text-sm md:text-base mt-1 border rounded outline-none border-primary-100 placeholder:text-gray-400;
   }
   .btn-auth-outline {
     @apply py-3 text-center w-full  rounded border border-primary-150 text-primary-200 flex items-center justify-center gap-2.5 hover:bg-gray-50 text-sm xs:text-base px-2 transition-colors duration-300 ease-linear;
@@ -42,5 +42,8 @@
   }
   button {
     @apply hover:cursor-pointer disabled:cursor-default;
+  }
+  th {
+    @apply font-normal;
   }
 }

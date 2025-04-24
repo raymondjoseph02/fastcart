@@ -9,4 +9,6 @@ export const RoutePaths = {
   CATEGORIES: "/categories",
   CONFIRM_EMAIL: "/confirm-email",
   REGISTERATION_COMPLETE: "/registeration-complete",
+  CUSTOMERS: "/customers",
+  NEW_CUSTOMER: "/customers/new",
 };
