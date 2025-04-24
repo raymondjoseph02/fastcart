@@ -7,9 +7,9 @@ import RegisterationComplete from "../pages/RegisterationComplete";
 import Register from "../pages/Register";
 import { DashboardLayout } from "../layout/dashboardLayout";
 import Dashboard from "../pages/Dashboard";
-import Customers from "../pages/customers/Customers";
-import CustomerDetails from "../pages/customers/CustomerDetails";
-import CustomerDetailsForm from "../pages/customers/CustomerDetailsForm";
+import Customers from "../pages/Customers";
+import CustomerDetails from "../pages/CustomerDetails";
+import CustomerDetailsForm from "../pages/CustomerDetailsForm";
 
 export const routes = createBrowserRouter([
   {
