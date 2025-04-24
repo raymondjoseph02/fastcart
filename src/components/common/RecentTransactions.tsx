@@ -1,4 +1,5 @@
 import React from "react";
+import StatusBadge from "./StatusBar";
 
 type Transaction = {
   name: string;
@@ -24,15 +25,6 @@ const transactions: Transaction[] = [
   },
   { name: "Anup S.", date: "22.05.2023", amount: "$70.52", status: "Paid" },
 ];
-
-const StatusBadge: React.FC<{ status: "Paid" | "Pending" }> = ({ status }) => {
-  const baseClasses = "px-3 py-1 rounded-sm text-sm ";
-  const statusClasses =
-    status === "Paid"
-      ? "bg-green-50 text-green-200"
-      : "bg-gray-200 text-gray-100";
-  return <span className={`${baseClasses} ${statusClasses}`}>{status}</span>;
-};
 
 const RecentTransactions: React.FC = () => {
   return (
