@@ -1,7 +1,7 @@
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import { sidebarItems } from "../../utility/sideBarItems";
 import { NavBarProps, SidebarLinkProps } from "../../interface/navbar";
-
+import { motion } from "framer-motion";
 const SideBar = ({ isOpen, toggleSidebar }: NavBarProps) => {
   const SideBarLink = ({ icon, name, to, toggleSidebar }: SidebarLinkProps) => {
     const resolvedPath = useResolvedPath(to);
@@ -9,6 +9,7 @@ const SideBar = ({ isOpen, toggleSidebar }: NavBarProps) => {
       path: `${resolvedPath.pathname}/*`,
       end: true,
     });
+
     console.log(isActive);
     console.log(resolvedPath.pathname);
 
@@ -16,16 +17,26 @@ const SideBar = ({ isOpen, toggleSidebar }: NavBarProps) => {
       <Link
         to={to}
         className={
-          "px-4 rounded py-2.5 flex gap-4 items-center " +
-          (isActive ? "bg-white text-gray-100" : "text-white ")
+          "px-4 rounded py-2.5 flex gap-4 items-center relative  " +
+          (isActive ? " text-gray-100" : "text-white ")
         }
         onClick={toggleSidebar}
       >
-        <span className={isActive ? "text-[#979797]" : "text-white"}>
+        <span
+          className={isActive ? "text-[#979797] relative z-20" : "text-white"}
+        >
           {icon}
         </span>
 
-        <p className="text-sm  ">{name}</p>
+        <p className="relative z-20 text-sm">{name}</p>
+
+        {isActive && (
+          <motion.div
+            id="backgroundAnimation"
+            layoutId="backgroundAnimation"
+            className="absolute top-0 left-0 w-full h-full bg-white rounded "
+          ></motion.div>
+        )}
       </Link>
     );
   };

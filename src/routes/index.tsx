@@ -7,6 +7,9 @@ import RegisterationComplete from "../pages/RegisterationComplete";
 import Register from "../pages/Register";
 import { DashboardLayout } from "../layout/dashboardLayout";
 import Dashboard from "../pages/Dashboard";
+import Categories from "../pages/Categories";
+import CreateCategory from "../pages/CreateCategory";
+import { Products } from "../pages/Products";
 import Customers from "../pages/Customers";
 import CustomerDetails from "../pages/CustomerDetails";
 import CustomerDetailsForm from "../pages/CustomerDetailsForm";
@@ -23,6 +26,23 @@ export const routes = createBrowserRouter([
       {
         path: RoutePaths.DASHBOARD,
         element: <Dashboard />,
+      },
+      {
+        path: RoutePaths.PRODUCTS,
+        element: <Products />,
+      },
+
+      {
+        path: RoutePaths.CATEGORIES,
+        element: <Categories />,
+      },
+      {
+        path: RoutePaths.CREATE_CATEGORY,
+        element: <CreateCategory />,
+      },
+      {
+        path: RoutePaths.EDIT_CATEGORY,
+        element: <CreateCategory />,
       },
       {
         path: RoutePaths.CUSTOMERS,
