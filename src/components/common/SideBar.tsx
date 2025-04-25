@@ -47,7 +47,6 @@ const SideBar = ({ isOpen, toggleSidebar }: NavBarProps) => {
         "w-[250px] bg-primary-300 backdrop-blur-sm p-4 fixed top-[69px] left-0 bottom-0 h-full lg:translate-x-0 z-20 transition-transform  ease-linear " +
         (isOpen ? "translate-x-0" : "-translate-x-full")
       }
-      lg:translate-x-0
     >
       {sidebarItems.map((item) => (
         <SideBarLink

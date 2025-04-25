@@ -1,5 +1,6 @@
 import {
   CategoriesIcon,
+  CustomersIcon,
   DashboardIcon,
   ProductsIcon,
 } from "../assets/svg/general";
@@ -20,5 +21,10 @@ export const sidebarItems = [
     name: "Products",
     link: RoutePaths.PRODUCTS,
     icon: <ProductsIcon />,
+  },
+  {
+    name: "Customers",
+    link: RoutePaths.CUSTOMERS,
+    icon: <CustomersIcon />,
   },
 ];

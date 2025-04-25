@@ -10,6 +10,9 @@ import Dashboard from "../pages/Dashboard";
 import Categories from "../pages/Categories";
 import CreateCategory from "../pages/CreateCategory";
 import { Products } from "../pages/Products";
+import Customers from "../pages/Customers";
+import CustomerDetails from "../pages/CustomerDetails";
+import CustomerDetailsForm from "../pages/CustomerDetailsForm";
 
 export const routes = createBrowserRouter([
   {
@@ -40,6 +43,22 @@ export const routes = createBrowserRouter([
       {
         path: RoutePaths.EDIT_CATEGORY,
         element: <CreateCategory />,
+      },
+      {
+        path: RoutePaths.CUSTOMERS,
+        element: <Customers />,
+      },
+      {
+        path: RoutePaths.NEW_CUSTOMER,
+        element: <CustomerDetailsForm />,
+      },
+      {
+        path: `${RoutePaths.CUSTOMERS}/:id`,
+        element: <CustomerDetails />,
+      },
+      {
+        path: `${RoutePaths.CUSTOMERS}/:id/edit`,
+        element: <CustomerDetailsForm />,
       },
     ],
   },

@@ -11,4 +11,6 @@ export const RoutePaths = {
   EDIT_CATEGORY: "/category/:id/edit",
   CONFIRM_EMAIL: "/confirm-email",
   REGISTERATION_COMPLETE: "/registeration-complete",
+  CUSTOMERS: "/customers",
+  NEW_CUSTOMER: "/customers/new",
 };
