@@ -519,24 +519,6 @@ export const Plus = () => (
   </svg>
 );
 
-export const EditIcon = (props: SVGProps<SVGSVGElement>) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-    width="24"
-    height="24"
-    fill="none"
-    viewBox="0 0 24 24"
-  >
-    <path
-      fill="currentColor"
-      fillRule="evenodd"
-      d="M19 19a1 1 0 1 1 0 2H5a1 1 0 1 1 0-2zm-.997-15.415 1.412 1.412c.78.78.78 2.044 0 2.824l-8.237 8.238a1 1 0 0 1-.565.282L6 17l.659-4.613a1 1 0 0 1 .282-.565l8.238-8.237c.78-.78 2.044-.78 2.824 0m-1.412 1.412-8.002 8.002-.235 1.647 1.647-.235 8.002-8.002z"
-      clipRule="evenodd"
-    ></path>
-  </svg>
-);
-
 export const DeleteIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
