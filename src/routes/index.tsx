@@ -7,6 +7,7 @@ import RegisterationComplete from "../pages/RegisterationComplete";
 import Register from "../pages/Register";
 import { DashboardLayout } from "../layout/dashboardLayout";
 import Dashboard from "../pages/Dashboard";
+import Orders from "../pages/Orders";
 
 export const routes = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ export const routes = createBrowserRouter([
         path: RoutePaths.DASHBOARD,
         element: <Dashboard />,
       },
+      {
+        path: RoutePaths.ORDERS,
+        element: <Orders />,
+      }
     ],
   },
   {
@@ -42,5 +47,5 @@ export const routes = createBrowserRouter([
   {
     path: RoutePaths.REGISTERATION_COMPLETE,
     element: <RegisterationComplete />,
-  },
+  }
 ]);
