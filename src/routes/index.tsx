@@ -35,9 +35,9 @@ export const routes = createBrowserRouter([
 
         path: RoutePaths.ORDERS,
         element: <Orders />,
-      }
+      },
 
-        path: RoutePaths.PRODUCTS,
+       { path: RoutePaths.PRODUCTS,
         element: <Products />,
       },
 

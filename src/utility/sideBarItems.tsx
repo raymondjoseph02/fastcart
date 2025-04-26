@@ -4,7 +4,7 @@ import {
   CustomersIcon,
   DashboardIcon,
   ProductsIcon,
-    DashboardIcon, OrderIcon 
+  OrderIcon 
 } from "../assets/svg/general";
 import { RoutePaths } from "../routes/RoutesPath";
 
