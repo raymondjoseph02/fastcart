@@ -7,12 +7,16 @@ import RegisterationComplete from "../pages/RegisterationComplete";
 import Register from "../pages/Register";
 import { DashboardLayout } from "../layout/dashboardLayout";
 import Dashboard from "../pages/Dashboard";
+
+import Orders from "../pages/Orders";
+
 import Categories from "../pages/Categories";
 import CreateCategory from "../pages/CreateCategory";
 import { Products } from "../pages/Products";
 import Customers from "../pages/Customers";
 import CustomerDetails from "../pages/CustomerDetails";
 import CustomerDetailsForm from "../pages/CustomerDetailsForm";
+
 
 export const routes = createBrowserRouter([
   {
@@ -28,6 +32,11 @@ export const routes = createBrowserRouter([
         element: <Dashboard />,
       },
       {
+
+        path: RoutePaths.ORDERS,
+        element: <Orders />,
+      }
+
         path: RoutePaths.PRODUCTS,
         element: <Products />,
       },
@@ -60,6 +69,7 @@ export const routes = createBrowserRouter([
         path: `${RoutePaths.CUSTOMERS}/:id/edit`,
         element: <CustomerDetailsForm />,
       },
+
     ],
   },
   {
@@ -81,5 +91,5 @@ export const routes = createBrowserRouter([
   {
     path: RoutePaths.REGISTERATION_COMPLETE,
     element: <RegisterationComplete />,
-  },
+  }
 ]);
