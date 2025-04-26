@@ -7,6 +7,10 @@ export const RoutePaths = {
   ORDERS: "/orders",
   PRODUCTS: "/products",
   CATEGORIES: "/categories",
+  CREATE_CATEGORY: "/create-category",
+  EDIT_CATEGORY: "/category/:id/edit",
   CONFIRM_EMAIL: "/confirm-email",
   REGISTERATION_COMPLETE: "/registeration-complete",
+  CUSTOMERS: "/customers",
+  NEW_CUSTOMER: "/customers/new",
 };

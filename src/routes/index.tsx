@@ -7,7 +7,16 @@ import RegisterationComplete from "../pages/RegisterationComplete";
 import Register from "../pages/Register";
 import { DashboardLayout } from "../layout/dashboardLayout";
 import Dashboard from "../pages/Dashboard";
+
 import Orders from "../pages/Orders";
+
+import Categories from "../pages/Categories";
+import CreateCategory from "../pages/CreateCategory";
+import { Products } from "../pages/Products";
+import Customers from "../pages/Customers";
+import CustomerDetails from "../pages/CustomerDetails";
+import CustomerDetailsForm from "../pages/CustomerDetailsForm";
+
 
 export const routes = createBrowserRouter([
   {
@@ -23,9 +32,44 @@ export const routes = createBrowserRouter([
         element: <Dashboard />,
       },
       {
+
         path: RoutePaths.ORDERS,
         element: <Orders />,
       }
+
+        path: RoutePaths.PRODUCTS,
+        element: <Products />,
+      },
+
+      {
+        path: RoutePaths.CATEGORIES,
+        element: <Categories />,
+      },
+      {
+        path: RoutePaths.CREATE_CATEGORY,
+        element: <CreateCategory />,
+      },
+      {
+        path: RoutePaths.EDIT_CATEGORY,
+        element: <CreateCategory />,
+      },
+      {
+        path: RoutePaths.CUSTOMERS,
+        element: <Customers />,
+      },
+      {
+        path: RoutePaths.NEW_CUSTOMER,
+        element: <CustomerDetailsForm />,
+      },
+      {
+        path: `${RoutePaths.CUSTOMERS}/:id`,
+        element: <CustomerDetails />,
+      },
+      {
+        path: `${RoutePaths.CUSTOMERS}/:id/edit`,
+        element: <CustomerDetailsForm />,
+      },
+
     ],
   },
   {
