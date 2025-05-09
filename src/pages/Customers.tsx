@@ -4,7 +4,7 @@ import { EditIcon, Plus, Search } from "../assets/svg/general";
 import { customersData } from "../data/customers";
 import { Link, useNavigate } from "react-router-dom";
 import { RoutePaths } from "../routes/RoutesPath";
-import DeleteCustomer from "../components/modals/DeleteCustomer";
+import DeleteCustomer from "../components/common/modals/DeleteCustomer";
 import CustomersTable from "../components/customer/CustomersTable";
 import CustomersTablePagination from "../components/customer/CustomersPagination";
 
@@ -35,7 +35,7 @@ export default function Customers() {
       setActiveTabs(["All Customers"]);
     } else {
       setActiveTabs((prev) => {
-        let next = prev.includes(tab)
+        const next = prev.includes(tab)
           ? prev.filter((t) => t !== tab)
           : [...prev, tab];
         if (!next.some((t) => t !== "All Customers")) {

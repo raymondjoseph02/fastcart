@@ -3,4 +3,5 @@ export interface ProductHeadingProps {
   primaryBtnText: string;
   SecondaryBtnText: string;
   primaryBtnIcon: boolean;
+  handleOnClickPrimaryButton?: () => void;
 }
