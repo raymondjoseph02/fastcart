@@ -15,4 +15,8 @@ export const RoutePaths = {
   REGISTERATION_COMPLETE: "/registeration-complete",
   CUSTOMERS: "/customers",
   NEW_CUSTOMER: "/customers/new",
+  EDIT_CUSTOMER: "/customers/edit",
+  COUPONS: "/coupons",
+  NEW_COUPON: "/coupons/new",
+  EDIT_COUPON: "/coupons/edit",
 };

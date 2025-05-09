@@ -18,7 +18,7 @@ const empty = {
   notes: "",
 };
 
-const CustomerDetailsForm = () => {
+const ManageCustomer = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -304,4 +304,4 @@ const CustomerDetailsForm = () => {
   );
 };
 
-export default CustomerDetailsForm;
+export default ManageCustomer;

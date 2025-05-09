@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { LeftArrowIcon, RightArrowIcon } from "../../assets/svg/general";
-import { CustomersTablePaginationProps } from "../../interface/customerType";
+import { TablePaginationProps } from "../../interface/common";
 
-const CustomersTablePagination = ({
+const TablePagination = ({
   perPage,
   setPage,
   page,
-  totalCustomer,
-}: CustomersTablePaginationProps) => {
+  totalItems: totalCustomer,
+}: TablePaginationProps) => {
   const [maxVisiblePages, setMaxVisiblePages] = useState(5);
 
   const totalPages = Math.ceil(totalCustomer / perPage);
@@ -37,8 +37,8 @@ const CustomersTablePagination = ({
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 768) {
-        setMaxVisiblePages(3);
+      if (window.innerWidth < 768) {
+        setMaxVisiblePages(1);
       } else if (window.innerWidth <= 480) setMaxVisiblePages(1);
       else {
         setMaxVisiblePages(5);
@@ -106,4 +106,4 @@ const CustomersTablePagination = ({
   );
 };
 
-export default CustomersTablePagination;
+export default TablePagination;
