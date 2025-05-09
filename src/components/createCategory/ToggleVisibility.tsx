@@ -1,4 +1,3 @@
-import { Switch } from "@material-tailwind/react";
 export const ToggleVisibility = () => {
   return (
     <div className="space-y-6 bg-white rounded p-7">
@@ -6,7 +5,7 @@ export const ToggleVisibility = () => {
         Category Visibility
       </p>
       <div>
-        <Switch color="blue" label="Visible on site" />
+        <input type="checkbox" className="switch" />
       </div>
     </div>
   );

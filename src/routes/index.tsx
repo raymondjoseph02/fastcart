@@ -16,6 +16,7 @@ import { Products } from "../pages/Products";
 import Customers from "../pages/Customers";
 import CustomerDetails from "../pages/CustomerDetails";
 import CustomerDetailsForm from "../pages/CustomerDetailsForm";
+import { CreateProduct } from "../pages/CreateProduct";
 
 
 export const routes = createBrowserRouter([
@@ -39,6 +40,14 @@ export const routes = createBrowserRouter([
 
        { path: RoutePaths.PRODUCTS,
         element: <Products />,
+      },
+      {
+        path: RoutePaths.CREATE_PRODUCTS,
+        element: <CreateProduct />,
+      },
+      {
+        path: RoutePaths.EDIT_PRODUCT,
+        element: <CreateProduct />,
       },
 
       {

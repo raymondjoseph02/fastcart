@@ -6,6 +6,7 @@ export const Heading: FC<ProductHeadingProps> = ({
   primaryBtnIcon,
   primaryBtnText,
   SecondaryBtnText,
+  handleOnClickPrimaryButton,
 }) => {
   return (
     <div className="flex flex-row justify-between gap-2 xs:items-center">
@@ -20,10 +21,10 @@ export const Heading: FC<ProductHeadingProps> = ({
           {SecondaryBtnText}{" "}
         </button>
         <button
-          //   onClick={addCategory}
+          onClick={handleOnClickPrimaryButton}
           className="flex items-center justify-center gap-1 px-5 py-2 text-sm sm:text-base font-normal leading-6 text-white rounded bg-primary-200 hover:bg-[#1e5effe8] transition-colors ease-in-out duration-300"
         >
-          {primaryBtnIcon &&     <PlusIcon />}
+          {primaryBtnIcon && <PlusIcon />}
           {primaryBtnText}
         </button>
       </div>

@@ -6,6 +6,8 @@ export const RoutePaths = {
   DASHBOARD: "/dashboard",
   ORDERS: "/orders",
   PRODUCTS: "/products",
+  CREATE_PRODUCTS: "/create-product",
+  EDIT_PRODUCT: "/product/:id/edit",
   CATEGORIES: "/categories",
   CREATE_CATEGORY: "/create-category",
   EDIT_CATEGORY: "/category/:id/edit",

@@ -1,16 +1,18 @@
 import { useState } from "react";
-import { Cancel, DeleteIcon } from "../../assets/svg/general";
+import { Cancel, DeleteIcon } from "../../../assets/svg/general";
 
 interface DeleteCustomerPropsP {
   buttonType: "icon" | "text";
   onDelete: () => void;
   disabled?: boolean;
+  numbersOfItems?: number;
 }
 
 const DeleteCustomer = ({
   buttonType,
   onDelete,
   disabled = false,
+  numbersOfItems,
 }: DeleteCustomerPropsP) => {
   const [open, setOpen] = useState(false);
 
@@ -59,7 +61,8 @@ const DeleteCustomer = ({
             </button>
 
             <p className="mt-5 mb-10">
-              Are you sure you want to delete these items?
+              Are you sure you want to delete{" "}
+              {numbersOfItems ? numbersOfItems + " selected" : "these"} items?
             </p>
 
             <div className="flex justify-end items-center gap-4 flex-wrap">

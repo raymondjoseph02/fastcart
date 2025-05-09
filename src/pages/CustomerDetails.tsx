@@ -4,7 +4,7 @@ import { customersData } from "../data/customers";
 import { RoutePaths } from "../routes/RoutesPath";
 import { BackArrow, Cancel } from "../assets/svg/general";
 import StatusBadge from "../components/common/StatusBar";
-import DeleteCustomer from "../components/modals/DeleteCustomer";
+import DeleteCustomer from "../components/common/modals/DeleteCustomer";
 
 const CustomerDetails = () => {
   const { id } = useParams();
