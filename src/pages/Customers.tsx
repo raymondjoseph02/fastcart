@@ -23,6 +23,7 @@ export default function Customers() {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const [selected, setSelected] = useState<string[]>([]);
+  
 
   const [replicatedCustomers, setReplicatedCustomers] = useState(customersData); // Manage replicated customers state
 

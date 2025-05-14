@@ -17,6 +17,8 @@ import Customers from "../pages/Customers";
 import CustomerDetails from "../pages/CustomerDetails";
 import CustomerDetailsForm from "../pages/CustomerDetailsForm";
 import { CreateProduct } from "../pages/CreateProduct";
+import KnowledgeBase from "../pages/KnowledgeBase";
+import GettingStarted from "../pages/GettingStarted";
 
 
 export const routes = createBrowserRouter([
@@ -78,6 +80,14 @@ export const routes = createBrowserRouter([
         path: `${RoutePaths.CUSTOMERS}/:id/edit`,
         element: <CustomerDetailsForm />,
       },
+      {
+        path: RoutePaths.KNOWLEDGE_BASE,
+        element: <KnowledgeBase />,
+      },
+      {
+        path: `${RoutePaths.KNOWLEDGE_BASE}/:getting-started`,
+        element: <GettingStarted />,
+      }
 
     ],
   },
