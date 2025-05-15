@@ -1,4 +1,3 @@
-
 export const RoutePaths = {
   ROOT: "/",
   LOG_IN: "/login",
@@ -17,4 +16,5 @@ export const RoutePaths = {
   CUSTOMERS: "/customers",
   NEW_CUSTOMER: "/customers/new",
   KNOWLEDGE_BASE: "/knowledge-base",
+  GLOBAL_SETTINGS: "/global-settings",
 };

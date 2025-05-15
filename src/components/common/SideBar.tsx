@@ -1,7 +1,8 @@
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import { sidebarItems } from "../../utility/sideBarItems";
-import { NavBarProps, SidebarLinkProps } from "../../interface/navbar";
+import { NavBarProps, SidebarLinkProps } from "../../interface/common";
 import { motion } from "framer-motion";
+
 const SideBar = ({ isOpen, toggleSidebar }: NavBarProps) => {
   const SideBarLink = ({ icon, name, to, toggleSidebar }: SidebarLinkProps) => {
     const resolvedPath = useResolvedPath(to);
@@ -49,13 +50,20 @@ const SideBar = ({ isOpen, toggleSidebar }: NavBarProps) => {
       }
     >
       {sidebarItems.map((item) => (
-        <SideBarLink
-          icon={item.icon}
-          name={item.name}
-          to={item.link}
-          toggleSidebar={toggleSidebar}
-          key={item.name}
-        />
+        <>
+          {item.title && (
+            <p className="text-xs px-4 mt-7 mb-3 text-white">{item.title}</p>
+          )}
+          {item.children.map((link) => (
+            <SideBarLink
+              icon={link.icon}
+              name={link.name}
+              to={link.link}
+              toggleSidebar={toggleSidebar}
+              key={link.name}
+            />
+          ))}
+        </>
       ))}
     </div>
   );

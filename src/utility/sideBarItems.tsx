@@ -1,4 +1,3 @@
-
 import {
   CategoriesIcon,
   CustomersIcon,
@@ -6,38 +5,59 @@ import {
   ProductsIcon,
   OrderIcon,
   KnowledgeBaseIcon,
+  GlobalSettingsIcon,
 } from "../assets/svg/general";
+import { SidebarItems } from "../interface/common";
 import { RoutePaths } from "../routes/RoutesPath";
 
-export const sidebarItems = [
+export const sidebarItems: SidebarItems[] = [
   {
-    name: "Dashboard",
-    link: RoutePaths.DASHBOARD,
-    icon: <DashboardIcon />,
+    children: [
+      {
+        name: "Dashboard",
+        link: RoutePaths.DASHBOARD,
+        icon: <DashboardIcon />,
+      },
+      {
+        name: "Orders",
+        link: RoutePaths.ORDERS,
+        icon: <OrderIcon />,
+      },
+      {
+        name: "Categories",
+        link: RoutePaths.CATEGORIES,
+        icon: <CategoriesIcon />,
+      },
+      {
+        name: "Products",
+        link: RoutePaths.PRODUCTS,
+        icon: <ProductsIcon />,
+      },
+      {
+        name: "Customers",
+        link: RoutePaths.CUSTOMERS,
+        icon: <CustomersIcon />,
+      },
+    ],
   },
   {
-    name: "Orders",
-    link: RoutePaths.ORDERS,
-    icon: <OrderIcon />,
-},
-   {
-    name: "Categories",
-    link: RoutePaths.CATEGORIES,
-    icon: <CategoriesIcon />,
+    title: "Other Information",
+    children: [
+      {
+        name: "Knowledge Base",
+        link: RoutePaths.KNOWLEDGE_BASE,
+        icon: <KnowledgeBaseIcon />,
+      },
+    ],
   },
   {
-    name: "Products",
-    link: RoutePaths.PRODUCTS,
-    icon: <ProductsIcon />,
-  },
-  {
-    name: "Customers",
-    link: RoutePaths.CUSTOMERS,
-    icon: <CustomersIcon />,
-  },
-  {
-    name: "Knowledge Base",
-    link: RoutePaths.KNOWLEDGE_BASE,
-    icon: <KnowledgeBaseIcon />,
+    title: "Settings",
+    children: [
+      {
+        name: "Global Settings",
+        link: RoutePaths.GLOBAL_SETTINGS,
+        icon: <GlobalSettingsIcon />,
+      },
+    ],
   },
 ];
