@@ -11,9 +11,6 @@ const SideBar = ({ isOpen, toggleSidebar }: NavBarProps) => {
       end: true,
     });
 
-    console.log(isActive);
-    console.log(resolvedPath.pathname);
-
     return (
       <Link
         to={to}
@@ -54,7 +51,7 @@ const SideBar = ({ isOpen, toggleSidebar }: NavBarProps) => {
           {item.title && (
             <p className="text-xs px-4 mt-7 mb-3 text-white">{item.title}</p>
           )}
-          {item.children.map((link) => (
+          {item.children?.map((link) => (
             <SideBarLink
               icon={link.icon}
               name={link.name}
