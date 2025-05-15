@@ -19,7 +19,11 @@ import CustomerDetailsForm from "../pages/CustomerDetailsForm";
 import { CreateProduct } from "../pages/CreateProduct";
 import KnowledgeBase from "../pages/KnowledgeBase";
 import GettingStarted from "../pages/GettingStarted";
+<<<<<<< HEAD
 import { PersonalSettings } from "../pages/PersonalSettings";
+=======
+import GlobalSettings from "../pages/GlobalSettings";
+>>>>>>> 1b3d3d12d351acce47b28206bb14da0bceec7ff4
 
 export const routes = createBrowserRouter([
   {
@@ -86,8 +90,13 @@ export const routes = createBrowserRouter([
         element: <GettingStarted />,
       },
       {
+<<<<<<< HEAD
         path: RoutePaths.PERSONAL_SETTINGS,
         element: <PersonalSettings />,
+=======
+        path: RoutePaths.GLOBAL_SETTINGS,
+        element: <GlobalSettings />,
+>>>>>>> 1b3d3d12d351acce47b28206bb14da0bceec7ff4
       },
     ],
   },

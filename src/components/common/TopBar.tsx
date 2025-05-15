@@ -5,7 +5,7 @@ import {
   Notification,
   Search,
 } from "../../assets/svg/general";
-import { NavBarProps } from "../../interface/navbar";
+import { NavBarProps } from "../../interface/common";
 
 const TopBar = ({ isOpen, toggleSidebar }: NavBarProps) => {
   return (
@@ -61,7 +61,7 @@ const TopBar = ({ isOpen, toggleSidebar }: NavBarProps) => {
               Randhir kumar
             </p>
 
-            <ChevronDown className="hidden lg:inline-block" />
+            <ChevronDown className="hidden lg:inline-block text-[#F9F9F9]" />
           </div>
         </div>
       </div>
