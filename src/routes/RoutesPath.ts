@@ -16,9 +16,6 @@ export const RoutePaths = {
   CUSTOMERS: "/customers",
   NEW_CUSTOMER: "/customers/new",
   KNOWLEDGE_BASE: "/knowledge-base",
-<<<<<<< HEAD
   PERSONAL_SETTINGS: "/settings/personal",
-=======
   GLOBAL_SETTINGS: "/global-settings",
->>>>>>> 1b3d3d12d351acce47b28206bb14da0bceec7ff4
 };
