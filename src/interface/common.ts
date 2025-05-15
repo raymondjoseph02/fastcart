@@ -1,5 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 
+import { JSX } from "react";
+
 export interface SelectFilterProps {
   name: string;
   id?: string;
@@ -11,6 +13,11 @@ export interface SelectFilterProps {
 export interface TagProps {
   text: string;
   handleCancle?: () => void;
+}
+
+export interface NavBarProps {
+  isOpen: boolean;
+  toggleSidebar: () => void;
 }
 
 export interface TablePaginationProps {
@@ -29,4 +36,20 @@ export interface TabsProps {
 export interface StatusBadgeProps {
   status: "Paid" | "Pending";
   value?: string;
+}
+
+export interface SidebarLinkProps {
+  to: string;
+  icon: JSX.Element;
+  name: string;
+  toggleSidebar: () => void;
+}
+
+export interface SidebarItems {
+  children: {
+    name: string;
+    link: string;
+    icon: JSX.Element;
+  }[];
+  title?: string;
 }

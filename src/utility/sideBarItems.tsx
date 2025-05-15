@@ -5,38 +5,71 @@ import {
   ProductsIcon,
   OrderIcon,
   CouponIcon,
+  KnowledgeBaseIcon,
+  UserIcon,
+  GlobalSettingsIcon,
 } from "../assets/svg/general";
+import { SidebarItems } from "../interface/common";
 import { RoutePaths } from "../routes/RoutesPath";
 
-export const sidebarItems = [
+export const sidebarItems: SidebarItems[] = [
   {
-    name: "Dashboard",
-    link: RoutePaths.DASHBOARD,
-    icon: <DashboardIcon />,
+    children: [
+      {
+        name: "Dashboard",
+        link: RoutePaths.DASHBOARD,
+        icon: <DashboardIcon />,
+      },
+      {
+        name: "Orders",
+        link: RoutePaths.ORDERS,
+        icon: <OrderIcon />,
+      },
+      {
+        name: "Categories",
+        link: RoutePaths.CATEGORIES,
+        icon: <CategoriesIcon />,
+      },
+      {
+        name: "Products",
+        link: RoutePaths.PRODUCTS,
+        icon: <ProductsIcon />,
+      },
+      {
+        name: "Customers",
+        link: RoutePaths.CUSTOMERS,
+        icon: <CustomersIcon />,
+      },
+      {
+        name: "Coupons",
+        link: RoutePaths.COUPONS,
+        icon: <CouponIcon />,
+      },
+    ],
   },
   {
-    name: "Orders",
-    link: RoutePaths.ORDERS,
-    icon: <OrderIcon />,
+    title: "Other Information",
+    children: [
+      {
+        name: "Knowledge Base",
+        link: RoutePaths.KNOWLEDGE_BASE,
+        icon: <KnowledgeBaseIcon />,
+      },
+    ],
   },
   {
-    name: "Categories",
-    link: RoutePaths.CATEGORIES,
-    icon: <CategoriesIcon />,
-  },
-  {
-    name: "Products",
-    link: RoutePaths.PRODUCTS,
-    icon: <ProductsIcon />,
-  },
-  {
-    name: "Customers",
-    link: RoutePaths.CUSTOMERS,
-    icon: <CustomersIcon />,
-  },
-  {
-    name: "Coupons",
-    link: RoutePaths.COUPONS,
-    icon: <CouponIcon />,
+    title: "Settings",
+    children: [
+      {
+        name: "Personal Settings",
+        link: RoutePaths.PERSONAL_SETTINGS,
+        icon: <UserIcon />,
+      },
+      {
+        name: "Global Settings",
+        link: RoutePaths.GLOBAL_SETTINGS,
+        icon: <GlobalSettingsIcon />,
+      },
+    ],
   },
 ];

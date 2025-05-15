@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { ordersData } from "../data/ordersData"
-import  DeleteIcon  from "../assets/svg/Delete.svg";
-import EditIcon from "../assets/svg/Edit.svg";
+import { ordersData } from "../data/ordersData";
+import { EditIcon, Search } from "../assets/svg/general";
+import { Check } from "../assets/svg/general";
+import { Select, Option } from "@material-tailwind/react";
+import DeleteCustomer from "../components/common/modals/DeleteCustomer";
 
 // Define the PaymentStatus type
 type PaymentStatus = "Paid" | "Pending";
-  
 
 const ITEMS_PER_PAGE = 14;
 
@@ -14,13 +15,11 @@ const Orders: React.FC = () => {
   const [selected, setSelected] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [paymentFilter, setPaymentFilter] = useState<PaymentStatus | "All">("All");
+  const [replicatedOrders, setReplicatedOrders] = useState(ordersData);
 
-  const filteredOrders = ordersData.filter((order) => {
-    const matchesSearch =
-      order.customer.toLowerCase().includes(searchQuery.toLowerCase())
-
+  const filteredOrders = replicatedOrders.filter((order) => {
+    const matchesSearch = order.customer.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesFilter = paymentFilter === "All" || order.payment === paymentFilter;
-
     return matchesSearch && matchesFilter;
   });
 
@@ -54,12 +53,9 @@ const Orders: React.FC = () => {
       order.status,
       order.total,
     ]);
-  
-    const csvContent = [
-      headers.join(","),
-      ...rows.map((row) => row.join(",")),
-    ].join("\n");
-  
+
+    const csvContent = [headers.join(","), ...rows.map((row) => row.join(","))].join("\n");
+
     const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
@@ -68,133 +64,183 @@ const Orders: React.FC = () => {
     link.click();
     document.body.removeChild(link);
   };
-  
+
+  const handleEdit = () => {
+    console.log("Edit selected orders:", selected);
+  };
+
+  const handleDelete = () => {
+    if (selected.length === 0) {
+      alert("No orders selected for deletion.");
+      return;
+    }
+
+    const updatedOrders = replicatedOrders.filter(
+      (order) => !selected.includes(order.id)
+    );
+
+    setReplicatedOrders(updatedOrders);
+    setSelected([]);
+  };
 
   return (
-    <div className="p-6 bg-gray-50 max-w-[69.375rem] m-auto">
+    <div className="bg-gray-50">
       {/* Header */}
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-xl font-bold">Orders</h1>
         <div className="flex gap-3">
-        <button onClick={handleExport} className="bg-white text-primary-200 h-10 w-[6.125rem] rounded">Export</button>
-        <button className="bg-primary-200 text-white h-10 w-[9.1875rem] rounded">+ Add Order</button>
+          <button onClick={handleExport} className="bg-white text-primary-200 h-10 w-[6.125rem] rounded">
+            Export
+          </button>
+          <button className="bg-primary-200 text-white h-10 w-[9.1875rem] rounded">+ Add Order</button>
         </div>
       </div>
 
       <div className="p-8 w-full mt-7 bg-white rounded shadow overflow-hidden">
         {/* Filter + Search */}
-      <div className="flex flex-wrap  mb-4 justify-between">
-         <div className="flex gap-4 text-gray-400 items-center">
-         <select
-          className="border px-4 py-2 rounded"
-          value={paymentFilter}
-          onChange={(e) => setPaymentFilter(e.target.value as PaymentStatus | "All")}
-        >
-          <option value="All">Filter</option>
-          <option value="Paid">Paid</option>
-          <option value="Pending">Pending</option>
-        </select>
+        <div className="flex flex-wrap mb-4 justify-between">
+          <div className="flex gap-4 text-gray-400 items-center">
+            <div className="w-[180px] border border-primary-100 rounded">
+              <Select
+                value={paymentFilter}
+                onChange={(val) => {
+                  if (val) {
+                    setPaymentFilter(val as PaymentStatus | "All");
+                    setCurrentPage(1);
+                  }
+                }}
+                placeholder="Select Payment Status"
+                labelProps={{ className: "after:border-none before:border-none" }}
+                containerProps={{ className: "!border-0 !min-w-full" }}
+                className="border-0"
+                onPointerEnterCapture={() => {}}
+                onPointerLeaveCapture={() => {}}
+              >
+                {["All", "Paid", "Pending"].map((opt) => (
+                  <Option key={opt} value={opt}>
+                    {opt}
+                  </Option>
+                ))}
+              </Select>
+            </div>
 
-        <input
-          type="text"
-          placeholder="Search orders..."
-          value={searchQuery}
-          onChange={(e) => {
-            setSearchQuery(e.target.value);
-            setCurrentPage(1);
-          }}
-          className="border px-4 py-2 rounded w-full max-w-[21.875rem]"
-        />
-         </div>
-        <div className="flex gap-2 items-center">
-          <button className="w-10 h-10 flex justify-center border border-gray-200 ">
-           <img src={DeleteIcon} alt="delete" className="w-6" />
-          </button>
-          <button className="w-10 h-10 flex justify-center border border-gray-200 ">
-           <img src={EditIcon} alt="delete" className="w-6" />
-          </button>
-        </div>
-      </div>
-        {/* Table */}
-      <table className="w-full text-left">
-        <thead className="text-gray-100 text-sm">
-          <tr className="border-b border-gray-200 h-[2.75rem]">
-            <th className="px-4 py-2">
+            <div className="py-2 px-4 rounded flex gap-2 border border-primary-50">
+              <Search className="text-[#7E84A3]" />
               <input
-                type="checkbox"
-                checked={paginatedData.every((d) => selected.includes(d.id))}
-                onChange={handleCheckAll}
+                type="search"
+                className="outline-none w-full text-gray-400"
+                placeholder="Search orders..."
+                value={searchQuery}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  setCurrentPage(1);
+                }}
               />
-            </th>
-            <th className="px-4 py-2">Order</th>
-            <th className="px-4 py-2">Date</th>
-            <th className="px-4 py-2">Customer</th>
-            <th className="px-4 py-2">Payment status</th>
-            <th className="px-4 py-2">Order Status</th>
-            <th className="px-4 py-2">Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          {paginatedData.map((order) => (
-            <tr key={order.id} className="border-b border-gray-50 h-[3.25rem] text-gray-300 text-sm">
-              <td className="px-4 py-2">
-                <input
-                  type="checkbox"
-                  checked={selected.includes(order.id)}
-                  onChange={() => handleCheck(order.id)}
-                />
-              </td>
-              <td className="px-4 py-2">{order.id}</td>
-              <td className="px-4 py-2">{order.date}</td>
-              <td className="px-4 py-2">{order.customer}</td>
-              <td className="px-4 py-2">
-                <span
-                  className={`text-xs px-2 py-1 rounded ${
-                    order.payment === "Paid"
-                      ? "bg-green-50 text-green-200"
-                      : "bg-gray-200 text-gray-100"
-                  }`}
-                >
-                  {order.payment}
-                </span>
-              </td>
-              <td className="px-4 py-2">
-                <span
-                  className={`text-xs px-2 py-1 rounded ${
-                    order.status === "Ready"
-                      ? "bg-yellow-100 text-white"
-                      : order.status === "Shipped"
-                      ? "bg-gray-100 text-white"
-                      : "bg-primary-200 text-white"
-                  }`}
-                >
-                  {order.status}
-                </span>
-              </td>
-              <td className="px-4 py-2">{order.total}</td>
+            </div>
+          </div>
+
+          <div className="flex gap-2 items-center">
+            <button
+              onClick={handleEdit}
+              className="p-2 disabled:opacity-50 hover:text-white hover:bg-primary-200 text-primary-200 border rounded border-gray-150"
+              aria-label="Edit selected"
+              disabled={selected.length !== 1}
+            >
+              <EditIcon />
+            </button>
+
+            <DeleteCustomer
+              disabled={selected.length < 1}
+              buttonType="icon"
+              onDelete={handleDelete}
+            />
+          </div>
+        </div>
+
+        {/* Table */}
+        <table className="w-full text-left">
+          <thead className="text-gray-100 text-sm">
+            <tr className="border-b border-gray-200 h-[2.75rem]">
+              <th className="px-4 py-2">
+                <div className="relative">
+                  <input
+                    type="checkbox"
+                    checked={paginatedData.every((d) => selected.includes(d.id))}
+                    onChange={handleCheckAll}
+                    className="peer w-5 h-5 appearance-none border border-primary-150 rounded checked:bg-primary-200 checked:border-0 cursor-pointer"
+                  />
+                  <Check className="absolute w-3 h-3 top-[6px] left-[6px] stroke-white hidden peer-checked:block pointer-events-none" />
+                </div>
+              </th>
+              <th className="px-4 py-2">Order</th>
+              <th className="px-4 py-2">Date</th>
+              <th className="px-4 py-2">Customer</th>
+              <th className="px-4 py-2">Payment status</th>
+              <th className="px-4 py-2">Order Status</th>
+              <th className="px-4 py-2">Total</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {paginatedData.map((order) => (
+              <tr key={order.id} className="border-b border-gray-50 h-[3.25rem] text-gray-300 text-sm">
+                <td className="px-4 py-2">
+                  <div className="relative">
+                    <input
+                      type="checkbox"
+                      checked={selected.includes(order.id)}
+                      onChange={() => handleCheck(order.id)}
+                      className="peer w-5 h-5 appearance-none border border-primary-150 rounded checked:bg-primary-200 checked:border-0 cursor-pointer"
+                    />
+                    <Check className="absolute w-3 h-3 top-[6px] left-[6px] stroke-white hidden peer-checked:block pointer-events-none" />
+                  </div>
+                </td>
+                <td className="px-4 py-2">{order.id}</td>
+                <td className="px-4 py-2">{order.date}</td>
+                <td className="px-4 py-2">{order.customer}</td>
+                <td className="px-4 py-2">
+                  <span
+                    className={`text-xs px-2 py-1 rounded ${
+                      order.payment === "Paid"
+                        ? "bg-green-50 text-green-200"
+                        : "bg-gray-200 text-gray-100"
+                    }`}
+                  >
+                    {order.payment}
+                  </span>
+                </td>
+                <td className="px-4 py-2">
+                  <span
+                    className={`text-xs px-2 py-1 rounded ${
+                      order.status === "Ready"
+                        ? "bg-yellow-100 text-white"
+                        : order.status === "Shipped"
+                        ? "bg-gray-100 text-white"
+                        : "bg-primary-200 text-white"
+                    }`}
+                  >
+                    {order.status}
+                  </span>
+                </td>
+                <td className="px-4 py-2">{order.total}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
 
       {/* Pagination */}
       <div className="flex justify-between items-center mt-4">
         <div className="flex items-center space-x-1">
-          {/* Prev */}
           <button
             onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
             disabled={currentPage === 1}
             className={`px-3 py-1 rounded ${
-              currentPage === 1
-                ? "text-gray-400 cursor-not-allowed"
-                : "hover:bg-gray-200"
+              currentPage === 1 ? "text-gray-400 cursor-not-allowed" : "hover:bg-gray-200"
             }`}
           >
             ←
           </button>
 
-          {/* Pages */}
           {[...Array(totalPages)].map((_, i) => {
             const page = i + 1;
             return (
@@ -212,26 +258,21 @@ const Orders: React.FC = () => {
             );
           })}
 
-          {/* Next */}
           <button
             onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
             disabled={currentPage === totalPages}
             className={`px-3 py-1 rounded ${
-              currentPage === totalPages
-                ? "text-gray-400 cursor-not-allowed"
-                : "hover:bg-gray-200"
+              currentPage === totalPages ? "text-gray-400 cursor-not-allowed" : "hover:bg-gray-200"
             }`}
           >
             →
           </button>
         </div>
 
-        <span className="text-base text-gray-100">
-           {filteredOrders.length} results
-        </span>
+        <span className="text-base text-gray-100">{filteredOrders.length} results</span>
       </div>
     </div>
   );
 };
 
-export default Orders
+export default Orders;

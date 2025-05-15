@@ -19,4 +19,7 @@ export const RoutePaths = {
   COUPONS: "/coupons",
   NEW_COUPON: "/coupons/new",
   EDIT_COUPON: "/coupons/edit",
+  KNOWLEDGE_BASE: "/knowledge-base",
+  PERSONAL_SETTINGS: "/settings/personal",
+  GLOBAL_SETTINGS: "/global-settings",
 };

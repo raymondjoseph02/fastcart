@@ -19,6 +19,10 @@ import ManageCustomer from "../pages/ManageCustomer";
 import { CreateProduct } from "../pages/CreateProduct";
 import Coupons from "../pages/Coupons";
 import ManageCoupon from "../pages/ManageCoupon";
+import KnowledgeBase from "../pages/KnowledgeBase";
+import GettingStarted from "../pages/GettingStarted";
+import PersonalSettings from "../pages/PersonalSettings";
+import GlobalSettings from "../pages/GlobalSettings";
 
 export const routes = createBrowserRouter([
   {
@@ -87,6 +91,22 @@ export const routes = createBrowserRouter([
       {
         path: `${RoutePaths.EDIT_COUPON}/:id`,
         element: <ManageCoupon />,
+      },
+      {
+        path: RoutePaths.KNOWLEDGE_BASE,
+        element: <KnowledgeBase />,
+      },
+      {
+        path: `${RoutePaths.KNOWLEDGE_BASE}/:getting-started`,
+        element: <GettingStarted />,
+      },
+      {
+        path: RoutePaths.PERSONAL_SETTINGS,
+        element: <PersonalSettings />,
+      },
+      {
+        path: RoutePaths.GLOBAL_SETTINGS,
+        element: <GlobalSettings />,
       },
     ],
   },
