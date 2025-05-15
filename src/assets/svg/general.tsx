@@ -570,6 +570,74 @@ export const ArrowDown = () => (
   </svg>
 );
 
+export const CouponIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    fill="none"
+    viewBox="0 0 24 24"
+  >
+    <path
+      fill="currentColor"
+      fillRule="evenodd"
+      d="M12.393 3.08c.233.1.42.283.52.513l2.042 4.684 5.143.471c.547.05.948.528.898 1.068a.98.98 0 0 1-.334.646l-3.88 3.366 1.136 4.975a.98.98 0 0 1-.751 1.173 1 1 0 0 1-.726-.114L12 17.26l-4.44 2.603a1 1 0 0 1-1.363-.342.97.97 0 0 1-.115-.717l1.136-4.975-3.88-3.366a.973.973 0 0 1-.09-1.384 1 1 0 0 1 .654-.33l5.143-.47 2.042-4.685a1 1 0 0 1 1.306-.513m1.204 7.044L12 6.462l-1.597 3.662-4.021.367 3.034 2.632-.888 3.888L12 14.976l3.47 2.035-.886-3.888 3.033-2.632z"
+      clipRule="evenodd"
+    ></path>
+  </svg>
+);
+
+export const ShippingIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    fill="none"
+    viewBox="0 0 24 24"
+  >
+    <path
+      fill="currentColor"
+      fillRule="evenodd"
+      d="M13 4a2 2 0 0 1 2 2v1h4.618L22 11.764V17h-2a3 3 0 1 1-6 0h-4a3 3 0 1 1-6 0H2V6a2 2 0 0 1 2-2zM7 16H6v2h2v-2zm10 0h-1v2h2v-2zM13 6H4v9h.764c.55-.614 1.347-1 2.236-1s1.687.386 2.236 1H13zm5.381 3H15v5.764A3 3 0 0 1 17 14c.889 0 1.687.386 2.236 1H20v-2.763z"
+      clipRule="evenodd"
+    ></path>
+  </svg>
+);
+
+export const PercentageDiscount = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    fill="none"
+    viewBox="0 0 24 24"
+  >
+    <path
+      fill="currentColor"
+      fillRule="evenodd"
+      d="M14 3a2 2 0 0 1 2 2v2h4v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7h4V5a2 2 0 0 1 2-2zm4 6H6v10h12zm-4-4h-4v2h4z"
+      clipRule="evenodd"
+    ></path>
+  </svg>
+);
+
+export const FixedDiscount = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    fill="none"
+    viewBox="0 0 24 24"
+  >
+    <path
+      fill="currentColor"
+      fillRule="evenodd"
+      d="M20 5a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm0 2H4v10h16zm-8 1a4 4 0 1 1 0 8 4 4 0 0 1 0-8m0 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"
+      clipRule="evenodd"
+    ></path>
+  </svg>
+);
+
 export const GlobalSettingsIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"

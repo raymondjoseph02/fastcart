@@ -11,6 +11,7 @@ module.exports = withMT({
       black: "#000000", // black color
 
       primary: {
+        500: "#336DFF",
         300: "#1E2753", // dark blue for side bar
         200: "#1E5EFF", // Primary blue color
         150: "#D7DBEC", // light blue for checkbox border
@@ -31,6 +32,7 @@ module.exports = withMT({
         200: "#E4E4E4", // Subtle gray borders
         300: "#131523", // Mid gray for text or borders
         400: "#A1A7C4", // Medium gray for secondary text
+        500: "#7E84A3",
       },
 
       red: {
