@@ -11,7 +11,7 @@ const StatCards = () => {
             stat && (
               <div
                 key={index}
-                className="bg-white hover:scale-110 transition-transform ease-linear font-inter rounded-md shadow-bg-auth py-1.5 px-3 flex justify-between gap-6 col-span-1 items-center"
+                className="bg-white transition-transform ease-linear font-inter rounded-md shadow-bg-auth py-1.5 px-3 flex justify-between gap-6 col-span-1 items-center"
               >
                 <div className="text-[10px] leading-5">
                   <p className="font-bold text-gray-300 text-base leading-7 ">
