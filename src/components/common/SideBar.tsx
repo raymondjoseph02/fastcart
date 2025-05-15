@@ -10,9 +10,6 @@ const SideBar = ({ isOpen, toggleSidebar }: NavBarProps) => {
       end: true,
     });
 
-    console.log(isActive);
-    console.log(resolvedPath.pathname);
-
     return (
       <Link
         to={to}

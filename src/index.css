@@ -47,7 +47,7 @@ select {
   @apply rounded appearance-none border relative border-[#D9E1EC]  w-full h-10 outline-none py-2 px-4 text-base font-normal;
 }
 .select-icon {
-  @apply absolute right-4 top-1/2;
+  @apply absolute right-4 top-1/2 -translate-1/2;
 }
 
 option {

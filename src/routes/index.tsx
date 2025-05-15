@@ -19,7 +19,7 @@ import CustomerDetailsForm from "../pages/CustomerDetailsForm";
 import { CreateProduct } from "../pages/CreateProduct";
 import KnowledgeBase from "../pages/KnowledgeBase";
 import GettingStarted from "../pages/GettingStarted";
-
+import { PersonalSettings } from "../pages/PersonalSettings";
 
 export const routes = createBrowserRouter([
   {
@@ -35,14 +35,11 @@ export const routes = createBrowserRouter([
         element: <Dashboard />,
       },
       {
-
         path: RoutePaths.ORDERS,
         element: <Orders />,
       },
 
-       { path: RoutePaths.PRODUCTS,
-        element: <Products />,
-      },
+      { path: RoutePaths.PRODUCTS, element: <Products /> },
       {
         path: RoutePaths.CREATE_PRODUCTS,
         element: <CreateProduct />,
@@ -87,8 +84,11 @@ export const routes = createBrowserRouter([
       {
         path: `${RoutePaths.KNOWLEDGE_BASE}/:getting-started`,
         element: <GettingStarted />,
-      }
-
+      },
+      {
+        path: RoutePaths.PERSONAL_SETTINGS,
+        element: <PersonalSettings />,
+      },
     ],
   },
   {
@@ -110,5 +110,5 @@ export const routes = createBrowserRouter([
   {
     path: RoutePaths.REGISTERATION_COMPLETE,
     element: <RegisterationComplete />,
-  }
+  },
 ]);
