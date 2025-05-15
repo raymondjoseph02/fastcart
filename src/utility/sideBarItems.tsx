@@ -5,35 +5,13 @@ import {
   ProductsIcon,
   OrderIcon,
   KnowledgeBaseIcon,
-<<<<<<< HEAD
   UserIcon,
-=======
   GlobalSettingsIcon,
->>>>>>> 1b3d3d12d351acce47b28206bb14da0bceec7ff4
 } from "../assets/svg/general";
 import { SidebarItems } from "../interface/common";
 import { RoutePaths } from "../routes/RoutesPath";
 
-<<<<<<< HEAD
-export const sidebarItems = [
-  {
-    name: "Dashboard",
-    link: RoutePaths.DASHBOARD,
-    icon: <DashboardIcon />,
-  },
-  {
-    name: "Orders",
-    link: RoutePaths.ORDERS,
-    icon: <OrderIcon />,
-  },
-  {
-    name: "Categories",
-    link: RoutePaths.CATEGORIES,
-    icon: <CategoriesIcon />,
-  },
-=======
 export const sidebarItems: SidebarItems[] = [
->>>>>>> 1b3d3d12d351acce47b28206bb14da0bceec7ff4
   {
     children: [
       {
@@ -77,15 +55,15 @@ export const sidebarItems: SidebarItems[] = [
     title: "Settings",
     children: [
       {
+        name: "Personal Settings",
+        link: RoutePaths.PERSONAL_SETTINGS,
+        icon: <UserIcon />,
+      },
+      {
         name: "Global Settings",
         link: RoutePaths.GLOBAL_SETTINGS,
         icon: <GlobalSettingsIcon />,
       },
     ],
-  },
-  {
-    name: "Personal Settings",
-    link: RoutePaths.PERSONAL_SETTINGS,
-    icon: <UserIcon />,
   },
 ];

@@ -5,7 +5,8 @@ import { ProfileSettings } from "../components/personalSettings/ProfileSettings"
 import { Security } from "../components/personalSettings/Security";
 import { Account } from "../components/personalSettings/Account";
 import { Notification } from "../components/personalSettings/Notifications";
-export const PersonalSettings = () => {
+
+const PersonalSettings = () => {
   const [activeTab, setActiveTab] = useState("Profile");
   const tabs = [
     {
@@ -92,3 +93,5 @@ export const PersonalSettings = () => {
     </section>
   );
 };
+
+export default PersonalSettings;
