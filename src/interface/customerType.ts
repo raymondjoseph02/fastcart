@@ -36,10 +36,3 @@ export interface CustomersTableProps {
   paged: Customer[];
   setSelected: Dispatch<SetStateAction<string[]>>;
 }
-
-export interface CustomersTablePaginationProps {
-  setPage: Dispatch<SetStateAction<number>>;
-  perPage: number;
-  page: number;
-  totalCustomer: number;
-}

@@ -15,11 +15,13 @@ import CreateCategory from "../pages/CreateCategory";
 import { Products } from "../pages/Products";
 import Customers from "../pages/Customers";
 import CustomerDetails from "../pages/CustomerDetails";
-import CustomerDetailsForm from "../pages/CustomerDetailsForm";
+import ManageCustomer from "../pages/ManageCustomer";
 import { CreateProduct } from "../pages/CreateProduct";
+import Coupons from "../pages/Coupons";
+import ManageCoupon from "../pages/ManageCoupon";
 import KnowledgeBase from "../pages/KnowledgeBase";
 import GettingStarted from "../pages/GettingStarted";
-import { PersonalSettings } from "../pages/PersonalSettings";
+import PersonalSettings from "../pages/PersonalSettings";
 import GlobalSettings from "../pages/GlobalSettings";
 
 export const routes = createBrowserRouter([
@@ -68,15 +70,27 @@ export const routes = createBrowserRouter([
       },
       {
         path: RoutePaths.NEW_CUSTOMER,
-        element: <CustomerDetailsForm />,
+        element: <ManageCustomer />,
       },
       {
         path: `${RoutePaths.CUSTOMERS}/:id`,
         element: <CustomerDetails />,
       },
       {
-        path: `${RoutePaths.CUSTOMERS}/:id/edit`,
-        element: <CustomerDetailsForm />,
+        path: `${RoutePaths.EDIT_CUSTOMER}/:id`,
+        element: <ManageCustomer />,
+      },
+      {
+        path: RoutePaths.COUPONS,
+        element: <Coupons />,
+      },
+      {
+        path: `${RoutePaths.NEW_COUPON}`,
+        element: <ManageCoupon />,
+      },
+      {
+        path: `${RoutePaths.EDIT_COUPON}/:id`,
+        element: <ManageCoupon />,
       },
       {
         path: RoutePaths.KNOWLEDGE_BASE,
