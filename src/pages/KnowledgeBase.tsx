@@ -47,7 +47,7 @@ function KnowledgeBase() {
              li3 = "Create categories"
              />
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 justify-between gap-7 mt-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 justify-between gap-7">
             <BigCard
             title="Community Forum"
             text="Get help from community members, ask any questions and get answers faster."

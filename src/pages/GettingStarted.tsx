@@ -41,7 +41,7 @@ function GettingStarted() {
         {showSidebar ? "Close" : "Menu"}
       </button>
       <div
-        className={`max-w-90 absolute md:sticky h-100 border bg-gray-50 top-12 ${
+        className={`max-w-90 absolute md:sticky h-100 bg-gray-50 ${
           showSidebar ? "block" : "hidden"
         } sm:block`}
       >
