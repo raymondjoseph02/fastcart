@@ -41,10 +41,11 @@ function GettingStarted() {
         {showSidebar ? "Close" : "Menu"}
       </button>
       <div
-        className={`max-w-90 absolute md:sticky h-100 bg-gray-50 ${
-          showSidebar ? "block" : "hidden"
-        } sm:block`}
-      >
+  className={`max-w-90 bg-gray-50 z-40 sm:sticky sm:top-0 sm:h-screen ${
+    showSidebar ? "absolute top-0 left-0 h-screen w-72 p-4" : "hidden"
+  } sm:block`}
+>
+
         <Link to="/knowledge-base">
           <button className="flex items-center justify-center gap-1 text-sm text-gray-100">
             <BackArrow /> Back
