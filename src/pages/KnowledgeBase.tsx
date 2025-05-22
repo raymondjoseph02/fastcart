@@ -7,9 +7,9 @@ import Billing from "../assets/images/Billing.png";
 import Commerce from "../assets/images/Commerce.png";
 function KnowledgeBase() {
   return (
-    <div className="bg-gray-50 pb-19">
-      <h1 className="mt-8 font-bold text-xl sm:text-2xl">Knowledge Base</h1>
-        <div className="mt-13 h-12 py-2 px-4 rounded flex gap-2 border border-primary-50">
+    <div className="bg-gray-50 pb-9">
+      <h1 className="font-bold text-xl sm:text-2xl">Knowledge Base</h1>
+        <div className="mt-13 h-12 py-2 px-4 rounded flex items-center gap-2 border border-primary-50">
             <Search className="text-[#7E84A3]" />
               <input
                 type="search"
@@ -17,7 +17,7 @@ function KnowledgeBase() {
                 placeholder="Search orders..."
                />
         </div>
-        <div className="flex flex-wrap justify-between gap-4 mt-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-7 mt-2">
             <Card
              imageSrc={GettingStarted}
              title="Getting Started"
@@ -47,18 +47,18 @@ function KnowledgeBase() {
              li3 = "Create categories"
              />
         </div>
-        <div className="flex flex-wrap justify-between gap-4 mt-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 justify-between gap-7 mt-8">
             <BigCard
             title="Community Forum"
             text="Get help from community members, ask any questions and get answers faster."
             link="Join Community"
-            className="mt-10  max-w-135"
+            className="mt-10"
             />
             <BigCard
             title="Webinars"
             text="Join our series of webinars where you can ask questions live and see a presentation."
             link="Register"
-            className="mt-10  max-w-135"
+            className="mt-10"
             />
         </div>
         <div className="border-t border-gray-200 mt-8 text-center">
