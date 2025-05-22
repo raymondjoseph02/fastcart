@@ -687,7 +687,6 @@ export const CircleMinusIcon = () => (
     ></path>
   </svg>
 );
-
 export const UserIcon = () => (
   <svg
     width={24}

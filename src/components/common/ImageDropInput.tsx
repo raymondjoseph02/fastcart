@@ -8,6 +8,8 @@ export const ImageDropInput: FC<ImageDropInputProps> = ({
   const [dragOver, setDragOver] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
+  // TODO: add image edit functionality
+
   const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     setDragOver(false);
@@ -75,7 +77,10 @@ export const ImageDropInput: FC<ImageDropInputProps> = ({
           />
         ) : (
           <div className="flex flex-col items-center justify-center gap-3">
-            <button className="px-6 py-2 text-base font-normal leading-6 border text-primary-200 border-primary-150">
+            <button
+              type="button"
+              className="px-6 py-2 text-base font-normal leading-6 border text-primary-200 border-primary-150"
+            >
               Add File
             </button>
             <p className="text-sm leading-5 text-gray-100 font-base">

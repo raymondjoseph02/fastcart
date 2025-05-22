@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from "react";
 import { CategoryProductsProps } from "../../interface/category";
 import { categories } from "../../data/category";
 import { CategoryProps } from "../../interface/category";
-import smaple_image from "../../assets/images/category_sample.png";
+import sample_image from "../../assets/images/category_sample.png";
 import { DelectIcon, EditIcon, PlusIcon } from "../../assets/svg/general";
 import { ToggleVisibility } from "./ToggleVisibility";
 import { CategoryForm } from "./CategoryForm";
@@ -18,6 +18,31 @@ export const CategoryProducts: FC<CategoryProductsProps> = ({ isEdit, id }) => {
     );
     if (category) {
       setEditCategory(category);
+    }
+  };
+  const handleDeleteProduct = (productName: string) => {
+    if (editCategory) {
+      const updatedProducts = editCategory.products.filter(
+        (product) => product.productName !== productName
+      );
+      // Update the categories data
+      const updatedCategory = {
+        ...editCategory,
+        products: updatedProducts,
+      };
+      setEditCategory(updatedCategory);
+    }
+  };
+  const handleVisibility = () => {
+    // Handle the visibility change logic here
+    console.log(`Category ${id} visibility changed`);
+
+    if (editCategory) {
+      const updatedCategory = {
+        ...editCategory,
+        isVisible: !editCategory.visibility,
+      };
+      setEditCategory(updatedCategory);
     }
   };
   useEffect(() => {
@@ -57,7 +82,7 @@ export const CategoryProducts: FC<CategoryProductsProps> = ({ isEdit, id }) => {
                     <span className="rounded-full size-0.5 bg-[#979797]"></span>
                   </div>
                   <img
-                    src={smaple_image}
+                    src={sample_image}
                     alt={product.productName}
                     className="hidden object-cover rounded size-12 xs:flex"
                   />
@@ -69,11 +94,14 @@ export const CategoryProducts: FC<CategoryProductsProps> = ({ isEdit, id }) => {
                   <button className="text-[#7E84A3] hover:text-[#3d404e] transition-colors">
                     <EditIcon />
                   </button>
-                  <button className="text-[#7E84A3] hover:text-[#3d404e] transition-colors">
+                  <button
+                    onClick={() => handleDeleteProduct(product.productName)}
+                    className="text-[#7E84A3] hover:text-[#3d404e] transition-colors"
+                  >
                     <DelectIcon />
                   </button>
                 </div>
-                <div>
+                <div className="flex sm:hidden">
                   <IoMdMore className="text-gray-300 size-5" />
                 </div>
               </div>
@@ -84,7 +112,7 @@ export const CategoryProducts: FC<CategoryProductsProps> = ({ isEdit, id }) => {
         <div></div>
       )}
       <div className="basis-[30%] space-y-[1.875rem]">
-        <ToggleVisibility />
+        <ToggleVisibility handleOnChange={handleVisibility} id={id} />
         <CategoryForm isEdit editCategory={editCategory} />
       </div>
     </div>
