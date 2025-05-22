@@ -1,12 +1,18 @@
-import { useNavigate } from "react-router-dom";
 import { PlusIcon } from "../assets/svg/general";
 import { CategoriesSection } from "../components/categories/Categories";
-import { RoutePaths } from "../routes/RoutesPath";
+import { AddCategory } from "../components/common/modals/AddCategory";
+import { useState } from "react";
 function Categories() {
-  const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const addCategory = () => {
-    navigate(RoutePaths.CREATE_CATEGORY);
+    setIsModalOpen(!isModalOpen);
   };
+  const handleCategorySubmit = () => {
+    // Handle the category submission logic here
+    alert(`Category and  Product added successfully!`);
+    setIsModalOpen(false); // Close the modal after submission
+  };
+
   return (
     <div className="space-y-[1.87rem] ">
       <div className="flex flex-row justify-between gap-2 xs:items-center">
@@ -23,6 +29,11 @@ function Categories() {
           </button>
         </div>
       </div>
+      <AddCategory
+        isOpen={isModalOpen}
+        onClose={addCategory}
+        onSubmit={handleCategorySubmit}
+      />
       <CategoriesSection />
     </div>
   );

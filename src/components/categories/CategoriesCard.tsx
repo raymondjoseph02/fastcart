@@ -3,6 +3,7 @@ import defaultCategoryImage from "../../assets/images/category_sample.png";
 import { EditIcon } from "../../assets/svg/general";
 import { FC } from "react";
 import { CategoryCardPrpos } from "../../interface/category";
+import { RoutePaths } from "../../routes/RoutesPath";
 const CategoriesCard: FC<CategoryCardPrpos> = ({
   categoryTitle,
   numberOfProduct,
@@ -10,7 +11,7 @@ const CategoriesCard: FC<CategoryCardPrpos> = ({
 }) => {
   const navigate = useNavigate();
   const handleEdit = () => {
-    navigate(`/category/${categoryTitle}/edit`);
+    navigate(RoutePaths.EDIT_CATEGORY.replace(":id", categoryTitle));
   };
   return (
     <div className="flex flex-col rounded overflow-hidden h-[20.25rem] bg-red-100 group">

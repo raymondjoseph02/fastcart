@@ -1,10 +1,12 @@
-import { FC } from "react";
-import { ArrowDown, Cancel } from "../../../assets/svg/general";
-
+import { FC, useState } from "react";
+import { Cancel } from "../../../assets/svg/general";
+import MultiSelect from "../MultiSelect";
+import { categories } from "../../../data/category";
+import { ImageDropInput } from "../ImageDropInput";
 interface AddCategoryProps {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit?: (category: string, product: string) => void;
+  onSubmit?: () => void;
 }
 
 export const AddCategory: FC<AddCategoryProps> = ({
@@ -12,28 +14,34 @@ export const AddCategory: FC<AddCategoryProps> = ({
   onClose,
   onSubmit,
 }) => {
+  const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
+  const handleSelectChange = (selected: string[]) => {
+    setSelectedProducts(selected);
+  };
+  const options = categories.flatMap((category) =>
+    category.products.map((product) => ({
+      label: product.productName,
+      value: product.productName,
+    }))
+  );
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const form = e.target as HTMLFormElement;
-    const category = (form.elements.namedItem("category") as HTMLInputElement)
-      .value;
-    const product = (form.elements.namedItem("product") as HTMLSelectElement)
-      .value;
 
-    onSubmit?.(category, product);
+    onSubmit?.();
   };
 
   if (!isOpen) return null;
 
   return (
-    <div className="w-full h-screen inset-0 flex items-center justify-center absolute bg-black/50 transition-all ease-in-out duration-200">
+    <div className="absolute inset-0 flex items-center justify-center w-full h-screen transition-all duration-200 ease-in-out bg-black/50 z-1000">
       <dialog
         open
-        className="bg-white rounded p-7 space-y-7 w-full max-w-lg shadow-xl relative mx-auto transition-all ease-in-out duration-200"
+        className="relative w-full max-w-lg mx-auto transition-all duration-200 ease-in-out bg-white rounded shadow-xl p-7 space-y-7"
       >
-        {/* cancle icon  */}
+        {/* cancel icon  */}
 
-        <button onClick={onClose} className="top-5 right-5 absolute">
+        <button onClick={onClose} className="absolute top-5 right-5">
           <Cancel />
         </button>
 
@@ -45,7 +53,7 @@ export const AddCategory: FC<AddCategoryProps> = ({
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-5">
+        <form className="space-y-5">
           {/* Category Name Input */}
           <div className="space-y-1">
             <label
@@ -57,7 +65,7 @@ export const AddCategory: FC<AddCategoryProps> = ({
             <input
               id="category"
               name="category"
-              className="auth_input w-full"
+              className="w-full auth_input"
               type="text"
               placeholder="Women Clothes"
               required
@@ -73,20 +81,19 @@ export const AddCategory: FC<AddCategoryProps> = ({
               Add Products
             </label>
             <div className="relative">
-              <select
-                id="product"
-                name="product"
-                className="appearance-none w-full border border-[#D9E1EC] rounded px-4 py-2 text-sm font-normal text-gray-800"
-                required
-              >
-                <option value="">Choose a Product</option>
-                <option value="1">Product A</option>
-                <option value="2">Product B</option>
-              </select>
-              <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2">
-                <ArrowDown />
-              </div>
+              <MultiSelect
+                onChange={handleSelectChange}
+                options={options}
+                value={selectedProducts}
+                placeholder="Choose a Product"
+              />
             </div>
+          </div>
+          <div className="space-y-1">
+            <label className="text-sm font-normal leading-5 text-gray-600">
+              category image
+            </label>
+            <ImageDropInput isEdit={false} />
           </div>
 
           {/* Actions */}
@@ -94,12 +101,15 @@ export const AddCategory: FC<AddCategoryProps> = ({
             <button
               type="button"
               onClick={onClose}
-              className="text-primary-200 hover:text-primary-300 text-sm"
+              className="text-sm text-primary-200 hover:text-primary-300"
             >
               Cancel
             </button>
             <button
+              onClick={handleSubmit}
               type="submit"
+              disabled={selectedProducts.length === 0}
+              // disabled={!selectedProducts.length}
               className="button button_bg_primary !w-fit !px-6"
             >
               Create Category

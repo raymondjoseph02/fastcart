@@ -1,9 +1,4 @@
-import {
-  ArrowLeft,
-  ArrowRight,
-  DelectIcon,
-  EditIcon,
-} from "../assets/svg/general";
+import { ArrowLeft, ArrowRight, EditIcon } from "../assets/svg/general";
 import { SearchBar } from "../components/common/SearchBar";
 import { SelectFilter } from "../components/common/SelectFIlter";
 import { Heading } from "../components/products/Heading";
@@ -309,7 +304,7 @@ export const Products = () => {
             <SearchBar />
           </div>
           <div className="flex gap-3">
-            <div className="p-2 border border-primary-150 rounded text-primary-200 hover:bg-primary-150/60 transition-colors ease-in-out duration-500">
+            <div className="p-2 transition-colors duration-500 ease-in-out border rounded border-primary-150 text-primary-200 hover:bg-primary-150/60">
               <EditIcon />
             </div>
             <DeleteCustomer
@@ -330,7 +325,7 @@ export const Products = () => {
                   checked={paginatedProducts.every((c) =>
                     selected.includes(c.id.toString())
                   )}
-                  className="size-5 rounded border border-primary-200"
+                  className="border rounded size-5 border-primary-200"
                   onChange={toggleSelectAll}
                 />
               </td>
@@ -345,32 +340,32 @@ export const Products = () => {
             {paginatedProducts.map((product, index) => (
               <tr
                 key={index}
-                className="h-18 border-b border-primary-150 hover:bg-gray-50 whitespace-nowrap transition-colors"
+                className="transition-colors border-b h-18 border-primary-150 hover:bg-gray-50 whitespace-nowrap"
               >
                 <td className="pl-2">
                   <input
                     type="checkbox"
-                    className="size-5 rounded border outline-primary-200"
+                    className="border rounded size-5 outline-primary-200"
                     onChange={() => toggleSelect(product.id.toString())}
                     checked={selected.includes(product.id.toString())}
                   />
                 </td>
-                <td className="flex gap-4 items-center h-18">
+                <td className="flex items-center gap-4 h-18">
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="size-12 rounded"
+                    className="rounded size-12"
                   />
                   <div className="flex flex-col">
-                    <p className="text-sm font-medium text-gray-300 leading-5">
+                    <p className="text-sm font-medium leading-5 text-gray-300">
                       {product.name}
                     </p>
-                    <p className="text-sm font-normal text-gray-100 leading-5">
+                    <p className="text-sm font-normal leading-5 text-gray-100">
                       {product.description}
                     </p>
                   </div>
                 </td>
-                <td className="text-sm font-normal text-gray-300 leading-5">
+                <td className="text-sm font-normal leading-5 text-gray-300">
                   {product.inStock.toString().toLowerCase() ===
                   "out of stock" ? (
                     <p className="rounded bg-gray-150 w-fit py-0.5 px-2 text-sm font-normal text-gray-300 leading-5">
@@ -380,13 +375,13 @@ export const Products = () => {
                     <p>{product.inStock} in stock</p>
                   )}
                 </td>
-                <td className="text-sm capitalize font-normal text-gray-300 leading-5">
+                <td className="text-sm font-normal leading-5 text-gray-300 capitalize">
                   {product.color}
                 </td>
-                <td className="text-sm font-normal text-gray-300 leading-5">
+                <td className="text-sm font-normal leading-5 text-gray-300">
                   ${product.price}
                 </td>
-                <td className="text-sm font-normal text-gray-300 leading-5">
+                <td className="text-sm font-normal leading-5 text-gray-300">
                   {product.rating} ({product.vote} votes)
                 </td>
               </tr>
@@ -394,7 +389,7 @@ export const Products = () => {
           </tbody>
         </table>
 
-        <div className="flex justify-between items-center pt-7">
+        <div className="flex items-center justify-between pt-7">
           <div className="flex gap-1">
             <button
               onClick={() => handlePageChange(currentPage - 1)}
