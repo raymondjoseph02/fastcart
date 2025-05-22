@@ -33,6 +33,7 @@ module.exports = withMT({
         300: "#131523", // Mid gray for text or borders
         400: "#A1A7C4", // Medium gray for secondary text
         500: "#7E84A3",
+        600: "#151B26", // Gray for text
       },
 
       red: {

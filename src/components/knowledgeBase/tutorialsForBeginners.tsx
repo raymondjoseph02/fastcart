@@ -1,4 +1,5 @@
 import { Search } from "../../assets/svg/general";
+import BigCard from "../knowledgeBase/bigCards";
 
 function tutorialsForBeginners() {
   return (
@@ -12,6 +13,20 @@ function tutorialsForBeginners() {
               />
             </div>
       <h1 className="font-bold text-4xl sm:text-7xl mt-50 text-center">UNDER PROCESSING</h1>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-7">
+        <BigCard
+          title="Community Forum"
+          text="Get help from community members, ask any questions and get answers faster."
+          link="Join Community"
+          className="mt-10"
+        />
+        <BigCard
+          title="Webinars"
+          text="Join our series of webinars where you can ask questions live and see a presentation."
+          link="Register"
+          className="mt-10"
+        />
+      </div>
     </div>
   )
 }

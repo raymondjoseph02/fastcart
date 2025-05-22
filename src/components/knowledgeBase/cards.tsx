@@ -19,7 +19,7 @@ const Card: React.FC<ImageCardProps> = ({
   li3 = "",
 }) => {
   return (
-    <div className={`p-7 bg-white h-100 w-64 overflow-hidden rounded-md ${className}`}>
+    <div className={`p-7 bg-white h-100 w-full overflow-hidden rounded-md ${className}`}>
       <img src={imageSrc} alt={altText} className="size-36 m-auto" />
       <div className="mt-7">
         <h3 className="text-xl font-bold text-gray-300">{title}</h3>
