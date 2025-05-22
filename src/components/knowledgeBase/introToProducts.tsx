@@ -71,8 +71,6 @@ function IntroToProducts() {
             </section>
           ))}
         </section>
-
-        {/* ✅ Interactive Tabs */}
         <section className="pt-10">
           <h2 className="font-bold text-xl text-gray-300">Additional Information</h2>
 
