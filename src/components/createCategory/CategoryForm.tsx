@@ -1,4 +1,4 @@
-import { ImageDropInput } from "../common/ImageDropInput";
+import { ImageDropInput } from "../../common/ImageDropInput";
 import { CategoryFormProps } from "../../interface/category";
 import { FC, useEffect, useState } from "react";
 

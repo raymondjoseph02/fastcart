@@ -1,7 +1,7 @@
 import { Check, ProductsIcon, ShippingIcon } from "../../assets/svg/general";
 import { Link } from "react-router-dom";
 import { RoutePaths } from "../../routes/RoutesPath";
-import StatusBadge from "../common/StatusBar";
+import StatusBadge from "../../common/StatusBar";
 import { CouponsTableProps } from "../../interface/couponType";
 import { formatDate } from "../../utility/time";
 

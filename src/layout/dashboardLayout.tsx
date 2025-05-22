@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { DashboardLayoutProps } from "../interface/dataType";
 import { Outlet, useLocation } from "react-router-dom";
-import SideBar from "../components/common/SideBar";
+import SideBar from "../common/SideBar";
 
-import TopBar from "../components/common/TopBar";
+import TopBar from "../common/TopBar";
 import { RoutePaths } from "../routes/RoutesPath";
 
 export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
