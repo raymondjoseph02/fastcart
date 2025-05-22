@@ -1,5 +1,5 @@
 // import { useState } from "react";
-import { ImageDropInput } from "../common/ImageDropInput";
+import { ImageDropInput } from "../../common/ImageDropInput";
 import { ArrowDown } from "../../assets/svg/general";
 
 function CreateProductForm() {

@@ -1,7 +1,7 @@
 import OrdersChat from "../components/dashboard/OrdersChat";
 import StatCards from "../components/dashboard/StatCards";
-import RecentTransactions from "../components/common/RecentTransactions";
-import TopProducts from "../components/common/TopProducts";
+import RecentTransactions from "../common/RecentTransactions";
+import TopProducts from "../common/TopProducts";
 import WeeklySales from "../components/dashboard/WeeklySales";
 import { ManageIcon } from "../assets/svg/general";
 

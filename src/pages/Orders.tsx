@@ -3,7 +3,10 @@ import { ordersData } from "../data/ordersData";
 import { Search } from "../assets/svg/general";
 import { Check } from "../assets/svg/general";
 import { Select, Option } from "@material-tailwind/react";
-import DeleteCustomer from "../components/common/modals/DeleteCustomer";
+import DeleteCustomer from "../common/modals/DeleteCustomer";
+import { Heading } from "../common/Heading";
+import { useNavigate } from "react-router-dom";
+import { RoutePaths } from "../routes/RoutesPath";
 
 // Define the PaymentStatus type
 type PaymentStatus = "Paid" | "Pending";
@@ -14,18 +17,28 @@ const Orders: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [selected, setSelected] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [paymentFilter, setPaymentFilter] = useState<PaymentStatus | "All">("All");
+  const [paymentFilter, setPaymentFilter] = useState<PaymentStatus | "All">(
+    "All"
+  );
   const [replicatedOrders, setReplicatedOrders] = useState(ordersData);
 
+  const navigate = useNavigate();
+
   const filteredOrders = replicatedOrders.filter((order) => {
-    const matchesSearch = order.customer.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesFilter = paymentFilter === "All" || order.payment === paymentFilter;
+    const matchesSearch = order.customer
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
+    const matchesFilter =
+      paymentFilter === "All" || order.payment === paymentFilter;
     return matchesSearch && matchesFilter;
   });
 
   const totalPages = Math.ceil(filteredOrders.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const paginatedData = filteredOrders.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  const paginatedData = filteredOrders.slice(
+    startIndex,
+    startIndex + ITEMS_PER_PAGE
+  );
 
   const handleCheck = (id: string) => {
     setSelected((prev) =>
@@ -54,7 +67,10 @@ const Orders: React.FC = () => {
       order.total,
     ]);
 
-    const csvContent = [headers.join(","), ...rows.map((row) => row.join(","))].join("\n");
+    const csvContent = [
+      headers.join(","),
+      ...rows.map((row) => row.join(",")),
+    ].join("\n");
 
     const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
     const link = document.createElement("a");
@@ -81,16 +97,12 @@ const Orders: React.FC = () => {
 
   return (
     <div className="bg-gray-50">
-      {/* Header */}
-      <div className="flex justify-between items-center mb-4">
-        <h1 className="text-xl font-bold">Orders</h1>
-        <div className="flex gap-3">
-          <button onClick={handleExport} className="bg-white text-primary-200 h-10 w-[6.125rem] rounded">
-            Export
-          </button>
-          <button className="bg-primary-200 text-white h-10 w-[9.1875rem] rounded">+ Add Order</button>
-        </div>
-      </div>
+      <Heading
+        title="Orders"
+        primaryBtnIcon={true}
+        SecondaryBtnText="Export"
+        handleOnClickSecondaryButton={handleExport}
+      />
 
       <div className="p-8 w-full mt-7 bg-white rounded shadow overflow-hidden">
         {/* Filter + Search */}
@@ -106,7 +118,9 @@ const Orders: React.FC = () => {
                   }
                 }}
                 placeholder="Select Payment Status"
-                labelProps={{ className: "after:border-none before:border-none" }}
+                labelProps={{
+                  className: "after:border-none before:border-none",
+                }}
                 containerProps={{ className: "!border-0 !min-w-full" }}
                 className="border-0"
                 onPointerEnterCapture={() => {}}
@@ -152,7 +166,9 @@ const Orders: React.FC = () => {
                 <div className="flex items-center relative">
                   <input
                     type="checkbox"
-                    checked={paginatedData.every((d) => selected.includes(d.id))}
+                    checked={paginatedData.every((d) =>
+                      selected.includes(d.id)
+                    )}
                     onChange={handleCheckAll}
                     className="flex items-center justify-center peer w-5 h-5 appearance-none border border-primary-150 rounded checked:bg-primary-200 checked:border-0 cursor-pointer"
                   />
@@ -169,7 +185,10 @@ const Orders: React.FC = () => {
           </thead>
           <tbody>
             {paginatedData.map((order) => (
-              <tr key={order.id} className="border-b border-gray-50 h-[3.25rem] text-gray-300 text-sm">
+              <tr
+                key={order.id}
+                className="border-b border-gray-50 h-[3.25rem] text-gray-300 text-sm"
+              >
                 <td className="px-4 py-2">
                   <div className="relative">
                     <input
@@ -222,7 +241,9 @@ const Orders: React.FC = () => {
             onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
             disabled={currentPage === 1}
             className={`px-3 py-1 rounded ${
-              currentPage === 1 ? "text-gray-400 cursor-not-allowed" : "hover:bg-gray-200"
+              currentPage === 1
+                ? "text-gray-400 cursor-not-allowed"
+                : "hover:bg-gray-200"
             }`}
           >
             ←
@@ -249,14 +270,18 @@ const Orders: React.FC = () => {
             onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
             disabled={currentPage === totalPages}
             className={`px-3 py-1 rounded ${
-              currentPage === totalPages ? "text-gray-400 cursor-not-allowed" : "hover:bg-gray-200"
+              currentPage === totalPages
+                ? "text-gray-400 cursor-not-allowed"
+                : "hover:bg-gray-200"
             }`}
           >
             →
           </button>
         </div>
 
-        <span className="text-base text-gray-100">{filteredOrders.length} results</span>
+        <span className="text-base text-gray-100">
+          {filteredOrders.length} results
+        </span>
       </div>
     </div>
   );

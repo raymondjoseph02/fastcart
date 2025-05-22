@@ -1,5 +1,5 @@
 import { ArrowDown } from "../../assets/svg/general";
-import { ImageDropInput } from "../common/ImageDropInput";
+import { ImageDropInput } from "../../common/ImageDropInput";
 import { motion } from "framer-motion";
 export const ProfileSettings = () => {
   return (
