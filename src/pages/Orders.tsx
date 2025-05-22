@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ordersData } from "../data/ordersData";
-import { EditIcon, Search } from "../assets/svg/general";
+import { Search } from "../assets/svg/general";
 import { Check } from "../assets/svg/general";
 import { Select, Option } from "@material-tailwind/react";
 import DeleteCustomer from "../components/common/modals/DeleteCustomer";
@@ -63,10 +63,6 @@ const Orders: React.FC = () => {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-  };
-
-  const handleEdit = () => {
-    console.log("Edit selected orders:", selected);
   };
 
   const handleDelete = () => {
@@ -140,15 +136,6 @@ const Orders: React.FC = () => {
           </div>
 
           <div className="flex gap-2 items-center">
-            <button
-              onClick={handleEdit}
-              className="p-2 disabled:opacity-50 hover:text-white hover:bg-primary-200 text-primary-200 border rounded border-gray-150"
-              aria-label="Edit selected"
-              disabled={selected.length !== 1}
-            >
-              <EditIcon />
-            </button>
-
             <DeleteCustomer
               disabled={selected.length < 1}
               buttonType="icon"
@@ -162,14 +149,14 @@ const Orders: React.FC = () => {
           <thead className="text-gray-100 text-sm">
             <tr className="border-b border-gray-200 h-[2.75rem]">
               <th className="px-4 py-2">
-                <div className="relative">
+                <div className="flex items-center relative">
                   <input
                     type="checkbox"
                     checked={paginatedData.every((d) => selected.includes(d.id))}
                     onChange={handleCheckAll}
-                    className="peer w-5 h-5 appearance-none border border-primary-150 rounded checked:bg-primary-200 checked:border-0 cursor-pointer"
+                    className="flex items-center justify-center peer w-5 h-5 appearance-none border border-primary-150 rounded checked:bg-primary-200 checked:border-0 cursor-pointer"
                   />
-                  <Check className="absolute w-3 h-3 top-[6px] left-[6px] stroke-white hidden peer-checked:block pointer-events-none" />
+                  <Check className="absolute w-3 h-3 top-1 left-1 stroke-white hidden peer-checked:block pointer-events-none" />
                 </div>
               </th>
               <th className="px-4 py-2">Order</th>
@@ -191,7 +178,7 @@ const Orders: React.FC = () => {
                       onChange={() => handleCheck(order.id)}
                       className="peer w-5 h-5 appearance-none border border-primary-150 rounded checked:bg-primary-200 checked:border-0 cursor-pointer"
                     />
-                    <Check className="absolute w-3 h-3 top-[6px] left-[6px] stroke-white hidden peer-checked:block pointer-events-none" />
+                    <Check className="absolute w-3 h-3 top-1 left-1 stroke-white hidden peer-checked:block pointer-events-none" />
                   </div>
                 </td>
                 <td className="px-4 py-2">{order.id}</td>
