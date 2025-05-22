@@ -76,16 +76,16 @@ function IntroToProducts() {
         <section className="pt-10">
           <h2 className="font-bold text-xl text-gray-300">Additional Information</h2>
 
-          <section className="flex gap-3 h-14 mt-5 pt-4">
+          <section className="flex gap-2 sm:gap-3 h-14 mt-5 pt-4">
             {["Onboarding", "Tutorials", "Guides for Beginners"].map((tab) => (
               <p
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`h-10 cursor-pointer border-b-2 transition-all ${
+                className={`h-10 cursor-pointer border-b-2 transition-all text-sm sm:text-base ${
                   activeTab === tab
                     ? "border-primary-200 text-primary-200"
                     : "border-transparent text-gray-100"
-                } ${tab === "Guides for Beginners" ? "ml-8" : ""}`}
+                } ${tab === "Guides for Beginners" ? "ml-0 sm:ml-8" : ""}`}
               >
                 {tab}
               </p>
