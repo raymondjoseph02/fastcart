@@ -21,7 +21,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
 }) => {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  console.log(value, "value in MultiSelect");
+  console.log(options, "value in MultiSelect");
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -41,7 +41,12 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
     }
   };
 
-  const selectedOptions = options.filter((opt) => value.includes(opt.value));
+  const selectedOptions = options.filter((opt) =>
+    value.map((value) => value.toLowerCase().includes(opt.value.toLowerCase()))
+  );
+  // options.map((option) => console.log(option, "opr"));
+  value.map((option) => console.log(option, "vl"));
+  // console.log(options[0].label, options[0].value, value);
 
   return (
     <div
