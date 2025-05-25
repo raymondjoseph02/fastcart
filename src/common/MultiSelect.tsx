@@ -41,12 +41,16 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
     }
   };
 
-  const selectedOptions = options.filter((opt) =>
-    value.map((value) => value.toLowerCase().includes(opt.value.toLowerCase()))
-  );
-  // options.map((option) => console.log(option, "opr"));
-  value.map((option) => console.log(option, "vl"));
-  // console.log(options[0].label, options[0].value, value);
+  const selectedOptions =
+    value.length > 0
+      ? value.filter((value) =>
+          options.map((op) =>
+            op.value.toLowerCase().includes(value.toLowerCase())
+          )
+        )
+      : [];
+
+  console.log(selectedOptions);
 
   return (
     <div
@@ -62,15 +66,15 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
         ) : (
           selectedOptions.map((opt) => (
             <span
-              key={opt.value}
+              key={opt}
               className="flex items-center gap-2 bg-[#E6E9F4] rounded max-h-6 my-1 mx-2 text-[#5A607F] px-2 py-0.5"
             >
-              {opt.label}
+              {opt}
               <button
                 type="button"
                 onClick={(e) => {
                   e.stopPropagation();
-                  toggleOption(opt.value);
+                  toggleOption(opt);
                 }}
                 className="flex items-center justify-center rounded hover:bg-gray-200"
               >
