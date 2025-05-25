@@ -1,12 +1,8 @@
 import React, { useState } from "react";
 import { ordersData } from "../data/ordersData";
 import { Search } from "../assets/svg/general";
-import { Check } from "../assets/svg/general";
 import { Select, Option } from "@material-tailwind/react";
-import DeleteCustomer from "../common/modals/DeleteCustomer";
 import { Heading } from "../common/Heading";
-import { useNavigate } from "react-router-dom";
-import { RoutePaths } from "../routes/RoutesPath";
 
 // Define the PaymentStatus type
 type PaymentStatus = "Paid" | "Pending";
@@ -15,14 +11,11 @@ const ITEMS_PER_PAGE = 14;
 
 const Orders: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [selected, setSelected] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [paymentFilter, setPaymentFilter] = useState<PaymentStatus | "All">(
     "All"
   );
-  const [replicatedOrders, setReplicatedOrders] = useState(ordersData);
-
-  const navigate = useNavigate();
+  const [replicatedOrders] = useState(ordersData);
 
   const filteredOrders = replicatedOrders.filter((order) => {
     const matchesSearch = order.customer
@@ -39,22 +32,6 @@ const Orders: React.FC = () => {
     startIndex,
     startIndex + ITEMS_PER_PAGE
   );
-
-  const handleCheck = (id: string) => {
-    setSelected((prev) =>
-      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
-    );
-  };
-
-  const handleCheckAll = () => {
-    const allIds = paginatedData.map((item) => item.id);
-    const allSelected = allIds.every((id) => selected.includes(id));
-    setSelected((prev) =>
-      allSelected
-        ? prev.filter((id) => !allIds.includes(id))
-        : [...prev, ...allIds.filter((id) => !prev.includes(id))]
-    );
-  };
 
   const handleExport = () => {
     const headers = ["ID", "Date", "Customer", "Payment", "Status", "Total"];
@@ -79,20 +56,6 @@ const Orders: React.FC = () => {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-  };
-
-  const handleDelete = () => {
-    if (selected.length === 0) {
-      alert("No orders selected for deletion.");
-      return;
-    }
-
-    const updatedOrders = replicatedOrders.filter(
-      (order) => !selected.includes(order.id)
-    );
-
-    setReplicatedOrders(updatedOrders);
-    setSelected([]);
   };
 
   return (
@@ -148,33 +111,12 @@ const Orders: React.FC = () => {
               />
             </div>
           </div>
-
-          <div className="flex gap-2 items-center">
-            <DeleteCustomer
-              disabled={selected.length < 1}
-              buttonType="icon"
-              onDelete={handleDelete}
-            />
-          </div>
         </div>
 
         {/* Table */}
         <table className="w-full text-left">
           <thead className="text-gray-100 text-sm">
             <tr className="border-b border-gray-200 h-[2.75rem]">
-              <th className="px-4 py-2">
-                <div className="flex items-center relative">
-                  <input
-                    type="checkbox"
-                    checked={paginatedData.every((d) =>
-                      selected.includes(d.id)
-                    )}
-                    onChange={handleCheckAll}
-                    className="flex items-center justify-center peer w-5 h-5 appearance-none border border-primary-150 rounded checked:bg-primary-200 checked:border-0 cursor-pointer"
-                  />
-                  <Check className="absolute w-3 h-3 top-1 left-1 stroke-white hidden peer-checked:block pointer-events-none" />
-                </div>
-              </th>
               <th className="px-4 py-2">Order</th>
               <th className="px-4 py-2">Date</th>
               <th className="px-4 py-2">Customer</th>
@@ -189,17 +131,6 @@ const Orders: React.FC = () => {
                 key={order.id}
                 className="border-b border-gray-50 h-[3.25rem] text-gray-300 text-sm"
               >
-                <td className="px-4 py-2">
-                  <div className="relative">
-                    <input
-                      type="checkbox"
-                      checked={selected.includes(order.id)}
-                      onChange={() => handleCheck(order.id)}
-                      className="peer w-5 h-5 appearance-none border border-primary-150 rounded checked:bg-primary-200 checked:border-0 cursor-pointer"
-                    />
-                    <Check className="absolute w-3 h-3 top-1 left-1 stroke-white hidden peer-checked:block pointer-events-none" />
-                  </div>
-                </td>
                 <td className="px-4 py-2">{order.id}</td>
                 <td className="px-4 py-2">{order.date}</td>
                 <td className="px-4 py-2">{order.customer}</td>
