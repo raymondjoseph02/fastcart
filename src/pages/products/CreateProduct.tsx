@@ -45,7 +45,7 @@ export const CreateProduct = () => {
           <div className="space-y-6 bg-white rounded-md p-7">
             <p className="text-base font-bold text-[#131523]">Categories</p>
             {categories.map((category, index) => (
-              <div className="flex items-center gap-3">
+              <div key={index} className="flex items-center gap-3">
                 <input
                   key={index}
                   type="radio"

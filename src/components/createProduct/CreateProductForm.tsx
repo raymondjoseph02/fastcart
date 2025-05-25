@@ -58,6 +58,7 @@ function CreateProductForm() {
     "Thailand",
     "Vietnam",
   ];
+  console.log(optionBlocks);
 
   useEffect(() => {
     if (productCategory && productName) {
@@ -99,6 +100,8 @@ function CreateProductForm() {
       }
     }
   }, [productCategory, productName]);
+
+  console.log(optionBlocks);
 
   const handleChange = (
     e: React.ChangeEvent<

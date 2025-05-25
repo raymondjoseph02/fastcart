@@ -53,8 +53,6 @@ export const MultipleOptions: FC<MultipleOptionsProps> = ({
     setOptionBlocks((prev) => prev.filter((_, i) => i !== idx));
   };
 
-  console.log(option);
-
   return (
     <div className="space-y-6">
       <p className="text-base font-semibold leading-6 text-gray-300 capitalize sm:font-bold">
