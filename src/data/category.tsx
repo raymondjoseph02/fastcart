@@ -15,6 +15,7 @@ export const categories = [
         options: [
           { type: "size", values: ["S", "M", "L", "XL"] },
           { type: "color", values: ["Red", "Blue", "Black"] },
+          { type: "Brand", values: ["Nike", "Adidas", "Puma"] },
         ],
         discount: 10, // percent
         weight: 0.3, // kg

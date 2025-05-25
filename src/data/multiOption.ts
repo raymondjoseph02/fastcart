@@ -1,9 +1,9 @@
 export const option = {
   size: [
-    { label: "Small", value: "small" },
-    { label: "Medium", value: "medium" },
-    { label: "Large", value: "large" },
-    { label: "Extra Large", value: "extra-large" },
+    { label: "S", value: "small" },
+    { label: "M", value: "medium" },
+    { label: "L", value: "large" },
+    { label: "E", value: "extra-large" },
   ],
   color: [
     { label: "Red", value: "red" },

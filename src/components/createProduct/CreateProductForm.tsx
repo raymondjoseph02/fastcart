@@ -93,6 +93,8 @@ function CreateProductForm() {
             values: opt.values,
           }))
         );
+
+        console.log(product.options);
         setIsEdit(true);
       }
     }
