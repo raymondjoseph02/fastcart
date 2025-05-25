@@ -48,6 +48,11 @@ export const routes = createBrowserRouter([
         element: <CreateProduct />,
       },
       {
+        path: RoutePaths.ADD_PRODUCTS,
+        element: <CreateProduct />,
+      },
+
+      {
         path: RoutePaths.EDIT_PRODUCT,
         element: <CreateProduct />,
       },

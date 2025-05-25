@@ -2,238 +2,22 @@ import { ArrowLeft, ArrowRight, EditIcon } from "../../assets/svg/general";
 import { SearchBar } from "../../common/SearchBar";
 import { SelectFilter } from "../../common/SelectFIlter";
 import { Heading } from "../../common/Heading";
-import hoodieImage from "../../assets/images/hoodie.png";
-import tShirt from "../../assets/images/womenTshirt.png";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { RoutePaths } from "../../routes/RoutesPath";
 import DeleteCustomer from "../../common/modals/DeleteCustomer";
-
+import { categories } from "../../data/category";
+import { debounce } from "../../utility/debounce";
 export const Products = () => {
   const [selected, setSelected] = useState<string[]>([]);
   const [isDelete, setIsDelete] = useState(true);
-  const [products, setProducts] = useState([
-    {
-      id: 1,
-      name: "Men Grey Hoodie",
-      description: "Hoodies",
-      image: hoodieImage,
-      inStock: 96,
-      color: "black",
-      price: 49.99,
-      rating: "5.0",
-      vote: 32,
-    },
-    {
-      id: 2,
-      name: "Women Striped T-Shirt",
-      description: "T-Shirt",
-      image: tShirt,
-      inStock: 56,
-      color: "white",
-      price: 34.9,
-      rating: "4.8",
-      vote: 24,
-    },
-    {
-      id: 3,
-      name: "Men White T-Shirt",
-      description: "T-Shirt",
-      image: tShirt,
-      inStock: "Out of Stock",
-      color: "white",
-      price: 34.9,
-      rating: "4.8",
-      vote: 24,
-    },
-    {
-      id: 4,
-      name: "Black Hoodie 4",
-      description: "Hoodie",
-      image: hoodieImage,
-      inStock: 35,
-      color: "black",
-      price: 64.82,
-      rating: "4.5",
-      vote: 9,
-    },
-    {
-      id: 5,
-      name: "White T-Shirt 5",
-      description: "T-Shirt",
-      image: tShirt,
-      inStock: 25,
-      color: "white",
-      price: 65.24,
-      rating: "4.4",
-      vote: 4,
-    },
-    {
-      id: 6,
-      name: "Blue Sweater 6",
-      description: "Sweater",
-      image: hoodieImage,
-      inStock: 74,
-      color: "blue",
-      price: 41.91,
-      rating: "4.4",
-      vote: 48,
-    },
-    {
-      id: 7,
-      name: "Red Jacket 7",
-      description: "Jacket",
-      image: tShirt,
-      inStock: 87,
-      color: "red",
-      price: 39.18,
-      rating: "4.8",
-      vote: 10,
-    },
-    {
-      id: 8,
-      name: "Green Tank Top 8",
-      description: "Tank Top",
-      image: hoodieImage,
-      inStock: 1,
-      color: "green",
-      price: 38.42,
-      rating: "4.8",
-      vote: 28,
-    },
-    {
-      id: 9,
-      name: "Gray Hoodie 9",
-      description: "Hoodie",
-      image: tShirt,
-      inStock: 85,
-      color: "gray",
-      price: 38.68,
-      rating: "4.9",
-      vote: 24,
-    },
-    {
-      id: 10,
-      name: "Black T-Shirt 10",
-      description: "T-Shirt",
-      image: hoodieImage,
-      inStock: "Out of Stock",
-      color: "black",
-      price: 40.04,
-      rating: "4.2",
-      vote: 44,
-    },
-    {
-      id: 11,
-      name: "White Sweater 11",
-      description: "Sweater",
-      image: tShirt,
-      inStock: 62,
-      color: "white",
-      price: 51.39,
-      rating: "4.5",
-      vote: 41,
-    },
-    {
-      id: 12,
-      name: "Blue Jacket 12",
-      description: "Jacket",
-      image: hoodieImage,
-      inStock: 90,
-      color: "blue",
-      price: 43.07,
-      rating: "4.1",
-      vote: 34,
-    },
-    {
-      id: 13,
-      name: "Red Tank Top 13",
-      description: "Tank Top",
-      image: tShirt,
-      inStock: 91,
-      color: "red",
-      price: 50.06,
-      rating: "4.7",
-      vote: 19,
-    },
-    {
-      id: 14,
-      name: "Green Hoodie 14",
-      description: "Hoodie",
-      image: hoodieImage,
-      inStock: 80,
-      color: "green",
-      price: 61.11,
-      rating: "4.8",
-      vote: 38,
-    },
-    {
-      id: 15,
-      name: "Gray T-Shirt 15",
-      description: "T-Shirt",
-      image: tShirt,
-      inStock: 69,
-      color: "gray",
-      price: 49.49,
-      rating: "4.5",
-      vote: 1,
-    },
-    {
-      id: 16,
-      name: "Black Sweater 16",
-      description: "Sweater",
-      image: hoodieImage,
-      inStock: 57,
-      color: "black",
-      price: 47.86,
-      rating: "4.8",
-      vote: 11,
-    },
-    {
-      id: 17,
-      name: "White Jacket 17",
-      description: "Jacket",
-      image: tShirt,
-      inStock: 26,
-      color: "white",
-      price: 59.91,
-      rating: "4.7",
-      vote: 36,
-    },
-    {
-      id: 18,
-      name: "Blue Tank Top 18",
-      description: "Tank Top",
-      image: hoodieImage,
-      inStock: 94,
-      color: "blue",
-      price: 46.73,
-      rating: "4.3",
-      vote: 15,
-    },
-    {
-      id: 19,
-      name: "Red Hoodie 19",
-      description: "Hoodie",
-      image: tShirt,
-      inStock: 5,
-      color: "red",
-      price: 56.96,
-      rating: "4.9",
-      vote: 10,
-    },
-    {
-      id: 20,
-      name: "Green T-Shirt 20",
-      description: "T-Shirt",
-      image: hoodieImage,
-      inStock: "Out of Stock",
-      color: "green",
-      price: 44.73,
-      rating: "4.4",
-      vote: 0,
-    },
-  ]);
+  const [products, setProducts] = useState(() => {
+    const products = categories.flatMap((category) => category.products);
+    return products.map((product) => ({
+      ...product,
+    }));
+  });
+  const [searchTerm, setSearchTerm] = useState("");
 
   const navigate = useNavigate();
   const filterOption = ["date", "price", "rating"];
@@ -251,33 +35,84 @@ export const Products = () => {
     setCurrentPage(page);
   };
 
-  const toggleSelect = (id: string) => {
+  const toggleSelect = (name: string) => {
     setSelected((prevSelected) =>
-      prevSelected.includes(id)
-        ? prevSelected.filter((item) => item !== id)
-        : [...prevSelected, id]
+      prevSelected.includes(name)
+        ? prevSelected.filter((item) => item !== name)
+        : [...prevSelected, name]
     );
   };
 
   const toggleSelectAll = () => {
-    const allIds = paginatedProducts.map((c) => c.id.toString());
-    const allSelected = allIds.every((id) => selected.includes(id));
+    const allIds = paginatedProducts.map((c) => c.name.toString());
+    const allSelected = allIds.every((name) =>
+      selected.includes(name.toString())
+    );
     setSelected(
       allSelected
-        ? selected.filter((id) => !allIds.includes(id))
+        ? selected.filter((name) => !allIds.includes(name))
         : [...new Set([...selected, ...allIds])]
     );
+  };
+  const handleEditProduct = () => {
+    if (selected.length === 1) {
+      const productId = selected[0];
+      console.log("Editing product with ID:", productId);
+
+      const productCategory = categories.find((category) =>
+        category.products.some((product) => product.name === productId)
+      );
+      if (!productCategory) {
+        return;
+      }
+      const categoryName = productCategory.categoryName;
+      navigate(
+        RoutePaths.EDIT_PRODUCT.replace(":id", categoryName).replace(
+          ":productName",
+          productId
+        )
+      );
+    }
   };
 
   const handleDeleteProduct = () => {
     if (selected.length === 0) {
       return;
     }
+
     const updatedProducts = products.filter(
-      (product) => !selected.includes(product.id.toString())
+      (product) => !selected.includes(product.name.toString())
     );
     setProducts(updatedProducts);
     setSelected([]);
+  };
+  const filterProducts = (searchValue: string) => {
+    const lowerCaseSearchValue = searchValue.toLowerCase();
+    if (lowerCaseSearchValue.trim() === "") {
+      setProducts(
+        categories
+          .flatMap((category) => category.products)
+          .map((product) => ({ ...product }))
+      );
+      return;
+    }
+    const filteredProducts = categories
+      .flatMap((category) => category.products)
+      .filter(
+        (product) =>
+          product.name.toLowerCase().includes(lowerCaseSearchValue) ||
+          product.description.toLowerCase().includes(lowerCaseSearchValue)
+      )
+      .map((product) => ({ ...product }));
+
+    setProducts(filteredProducts);
+    setCurrentPage(1);
+  };
+  const debouncedHandleSearch = debounce(filterProducts, 300);
+
+  const handleSearch = (searchValue: string) => {
+    setSearchTerm(searchValue);
+    debouncedHandleSearch(searchValue);
   };
   useEffect(() => {
     if (selected.length !== 0) {
@@ -301,18 +136,29 @@ export const Products = () => {
         <div className="flex justify-between items-center pb-6.5 pl-2">
           <div className="flex gap-3">
             <SelectFilter name="productFilter" option={filterOption} />
-            <SearchBar />
+            <SearchBar
+              value={searchTerm}
+              setValue={setSearchTerm}
+              handleSearch={(e) => handleSearch(e.target.value)}
+            />
           </div>
           <div className="flex gap-3">
-            <div className="p-2 transition-colors duration-500 ease-in-out border rounded border-primary-150 text-primary-200 hover:bg-primary-150/60">
-              <EditIcon />
-            </div>
-            <DeleteCustomer
-              buttonType="icon"
-              disabled={isDelete}
-              onDelete={handleDeleteProduct}
-              numbersOfItems={selected.length}
-            />
+            {selected.length === 1 && (
+              <button
+                onClick={handleEditProduct}
+                className="p-2 transition-colors duration-500 ease-in-out border rounded border-primary-150 text-primary-200 hover:bg-primary-150/60"
+              >
+                <EditIcon />
+              </button>
+            )}
+            {selected.length > 0 && (
+              <DeleteCustomer
+                buttonType="icon"
+                disabled={isDelete}
+                onDelete={handleDeleteProduct}
+                numbersOfItems={selected.length}
+              />
+            )}
           </div>
         </div>
 
@@ -323,7 +169,7 @@ export const Products = () => {
                 <input
                   type="checkbox"
                   checked={paginatedProducts.every((c) =>
-                    selected.includes(c.id.toString())
+                    selected.includes(c.name.toString())
                   )}
                   className="border rounded size-5 border-primary-200"
                   onChange={toggleSelectAll}
@@ -346,8 +192,8 @@ export const Products = () => {
                   <input
                     type="checkbox"
                     className="border rounded size-5 outline-primary-200"
-                    onChange={() => toggleSelect(product.id.toString())}
-                    checked={selected.includes(product.id.toString())}
+                    onChange={() => toggleSelect(product.name.toString())}
+                    checked={selected.includes(product.name.toString())}
                   />
                 </td>
                 <td className="flex items-center gap-4 h-18">
@@ -366,17 +212,18 @@ export const Products = () => {
                   </div>
                 </td>
                 <td className="text-sm font-normal leading-5 text-gray-300">
-                  {product.inStock.toString().toLowerCase() ===
-                  "out of stock" ? (
+                  {product.stock.toString().toLowerCase() === "out of stock" ? (
                     <p className="rounded bg-gray-150 w-fit py-0.5 px-2 text-sm font-normal text-gray-300 leading-5">
-                      {product.inStock}
+                      {product.stock}
                     </p>
                   ) : (
-                    <p>{product.inStock} in stock</p>
+                    <p>{product.stock} in stock</p>
                   )}
                 </td>
                 <td className="text-sm font-normal leading-5 text-gray-300 capitalize">
-                  {product.color}
+                  {product.options
+                    ?.find((opt) => opt.name === "Color")
+                    ?.values.map((value) => value + " ") || "N/A"}
                 </td>
                 <td className="text-sm font-normal leading-5 text-gray-300">
                   ${product.price}

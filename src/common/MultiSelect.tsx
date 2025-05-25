@@ -21,6 +21,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
 }) => {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  console.log(value, "value in MultiSelect");
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -40,43 +41,33 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
     }
   };
 
-  const selectedLabels = options
-    .filter((opt) => value.includes(opt.value))
-    .map((opt) => opt.label);
+  const selectedOptions = options.filter((opt) => value.includes(opt.value));
 
   return (
     <div
       ref={ref}
-      className="relative w-full cursor-pointer  border border-[#D9E1EC] rounded min-h-10"
+      className="relative w-full cursor-pointer border border-[#D9E1EC] rounded min-h-10"
     >
       <div
         onClick={() => setOpen((o) => !o)}
-        className="flex w-full px-4 py-2 text-sm font-normal bg-white rounded cursor-pointer wrap-anywhere"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          flexWrap: "wrap",
-        }}
+        className="flex flex-wrap items-center w-full px-4 py-2 text-sm font-normal bg-white rounded cursor-pointer"
       >
-        {selectedLabels.length === 0 ? (
+        {selectedOptions.length === 0 ? (
           <span className="text-base text-gray-400">{placeholder}</span>
         ) : (
-          selectedLabels.map((label) => (
+          selectedOptions.map((opt) => (
             <span
-              key={label}
-              className="flex items-center justify-between gap-3 bg-[#E6E9F4] rounded max-h-6 my-1 mx-2 text-[#5A607F]"
-              style={{
-                padding: "2px 8px",
-              }}
+              key={opt.value}
+              className="flex items-center gap-2 bg-[#E6E9F4] rounded max-h-6 my-1 mx-2 text-[#5A607F] px-2 py-0.5"
             >
-              {label}
-
+              {opt.label}
               <button
+                type="button"
                 onClick={(e) => {
                   e.stopPropagation();
-                  toggleOption(label);
+                  toggleOption(opt.value);
                 }}
-                className="flex items-center justify-center hover:bg-gray-200"
+                className="flex items-center justify-center rounded hover:bg-gray-200"
               >
                 <Cancel />
               </button>
@@ -88,39 +79,20 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
         </span>
       </div>
       {open && (
-        <div
-          style={{
-            position: "absolute",
-            zIndex: 10,
-            background: "#fff",
-            border: "1px solid #ccc",
-            borderRadius: 4,
-            marginTop: 4,
-            width: "100%",
-            maxHeight: 200,
-            overflowY: "auto",
-            boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
-          }}
-        >
+        <div className="absolute z-10 w-full mt-1 overflow-y-auto bg-white border border-white rounded max-h-52">
           {options
             .filter((opt) => !value.includes(opt.value))
             .map((opt) => (
               <div
                 key={opt.value}
                 onClick={() => toggleOption(opt.value)}
-                style={{
-                  padding: "8px 12px",
-                  cursor: "pointer",
-                  background: "#fff",
-                  fontWeight: 400,
-                }}
+                className="flex items-center px-3 py-2 font-normal cursor-pointer hover:bg-gray-100"
               >
                 <input
                   type="checkbox"
-                  checked={false}
-                  className="appearance-none"
+                  checked={value.includes(opt.value) ? true : false}
                   readOnly
-                  style={{ marginRight: 8 }}
+                  className="mr-2 appearance-none accent-indigo-500"
                 />
                 {opt.label}
               </div>

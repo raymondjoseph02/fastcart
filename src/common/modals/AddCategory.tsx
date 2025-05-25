@@ -20,8 +20,8 @@ export const AddCategory: FC<AddCategoryProps> = ({
   };
   const options = categories.flatMap((category) =>
     category.products.map((product) => ({
-      label: product.productName,
-      value: product.productName,
+      label: product.name,
+      value: product.name.toString(),
     }))
   );
 
