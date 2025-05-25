@@ -8,8 +8,8 @@ export interface CategoryCardPrpos {
   numberOfProduct: number;
 }
 interface ProductProps {
-  productName: string;
-  productImage: string;
+  name: string;
+  image: string;
 }
 export interface CategoryProps {
   categoryName: string;

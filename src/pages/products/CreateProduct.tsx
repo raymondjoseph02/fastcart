@@ -8,10 +8,20 @@ import { Tag } from "../../components/createProduct/Tag";
 import { AddCategory } from "../../common/modals/AddCategory";
 export const CreateProduct = () => {
   const { id } = useParams();
+
   const [openAddModal, setOpenAddModal] = useState(false);
-  const [title, setTitle] = useState(
-    (id ? "Edit Product" : "Add Product") as string
+  const title = window.location.pathname.includes("edit")
+    ? "Edit Product"
+    : "Add Product";
+  const [selectedCategory, setSelectedCategory] = useState<string>(
+    id ? id : ""
   );
+  const handleSelectCategory = (categoryName: string) => {
+    // Handle the logic for selecting a category
+    if (!id) {
+      setSelectedCategory(categoryName);
+    }
+  };
   return (
     <div className="space-y-7.5">
       <div className="space-y-1">
@@ -41,6 +51,12 @@ export const CreateProduct = () => {
                   type="radio"
                   name="categoryVisibility"
                   id="categoryVisibility"
+                  disabled={id ? true : false}
+                  onChange={() => handleSelectCategory(category.categoryName)}
+                  value={selectedCategory}
+                  checked={selectedCategory === category.categoryName}
+                  aria-label={category.categoryName}
+                  aria-describedby="categoryVisibility"
                   className="p-1 border rounded-sm appearance-none checked:bg-primary-200 size-5 border-[#D7DBEC]"
                 />
                 <label
@@ -51,12 +67,14 @@ export const CreateProduct = () => {
                 </label>
               </div>
             ))}
-            <button
-              onClick={() => setOpenAddModal(true)}
-              className="text-base font-normal leading-6 text-primary-200"
-            >
-              Create New
-            </button>
+            {!id && (
+              <button
+                onClick={() => setOpenAddModal(!openAddModal)}
+                className="flex items-center gap-2 px-4 py-2 text-sm font-normal leading-6 text-primary-200 rounded hover:text-[#1e5effe8] transition-colors ease-in-out duration-300"
+              >
+                <span>Add Category</span>
+              </button>
+            )}
           </div>
           <div>
             <form>

@@ -7,10 +7,12 @@ import { DelectIcon, EditIcon, PlusIcon } from "../../assets/svg/general";
 import { ToggleVisibility } from "./ToggleVisibility";
 import { CategoryForm } from "./CategoryForm";
 import { IoMdMore } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
+import { RoutePaths } from "../../routes/RoutesPath";
 
 export const CategoryProducts: FC<CategoryProductsProps> = ({ isEdit, id }) => {
   const [editCategory, setEditCategory] = useState<CategoryProps | null>(null);
-
+  const navigate = useNavigate();
   const fetchCategory = () => {
     const category = categories.find(
       (category) =>
@@ -23,7 +25,7 @@ export const CategoryProducts: FC<CategoryProductsProps> = ({ isEdit, id }) => {
   const handleDeleteProduct = (productName: string) => {
     if (editCategory) {
       const updatedProducts = editCategory.products.filter(
-        (product) => product.productName !== productName
+        (product) => product.name !== productName
       );
       // Update the categories data
       const updatedCategory = {
@@ -45,6 +47,23 @@ export const CategoryProducts: FC<CategoryProductsProps> = ({ isEdit, id }) => {
       setEditCategory(updatedCategory);
     }
   };
+  const handleAddProduct = () => {
+    // Handle the logic to add a new product
+    navigate(
+      RoutePaths.ADD_PRODUCTS.replace(":id", editCategory?.categoryName || "")
+    );
+  };
+  const handleEditProduct = (productName: string) => {
+    console.log(`Editing product: ${productName}`);
+    if (!editCategory) return;
+    // Handle the logic to edit a product
+    navigate(
+      RoutePaths.EDIT_PRODUCT.replace(
+        ":id",
+        editCategory?.categoryName || ""
+      ).replace(":productName", productName)
+    );
+  };
   useEffect(() => {
     if (isEdit && id) {
       fetchCategory();
@@ -62,7 +81,10 @@ export const CategoryProducts: FC<CategoryProductsProps> = ({ isEdit, id }) => {
               </span>
             </p>
             <div>
-              <button className="h-10 py-2 px-4 text-base font-normal leading-6 rounded  border text-primary-200 hover:text-white  bg-white border-primary-150  hover:bg-primary-200 hover:border-[#b6b8c3] transition-colors ease-initial duration-900 flex  items-center gap-1">
+              <button
+                onClick={handleAddProduct}
+                className="h-10 py-2 px-4 text-base font-normal leading-6 rounded  border text-primary-200 hover:text-white  bg-white border-primary-150  hover:bg-primary-200 hover:border-[#b6b8c3] transition-colors ease-initial duration-900 flex  items-center gap-1"
+              >
                 <PlusIcon />
                 Add product
               </button>
@@ -83,19 +105,22 @@ export const CategoryProducts: FC<CategoryProductsProps> = ({ isEdit, id }) => {
                   </div>
                   <img
                     src={sample_image}
-                    alt={product.productName}
+                    alt={product.image}
                     className="hidden object-cover rounded size-12 xs:flex"
                   />
                   <p className="font-medium leading-5 text-gray-300 xs:text-sm">
-                    {product.productName}
+                    {product.name}
                   </p>
                 </div>
                 <div className="absolute items-center hidden gap-5 group-hover:sm:flex right-4 ">
-                  <button className="text-[#7E84A3] hover:text-[#3d404e] transition-colors">
+                  <button
+                    onClick={() => handleEditProduct(product.name)}
+                    className="text-[#7E84A3] hover:text-[#3d404e] transition-colors"
+                  >
                     <EditIcon />
                   </button>
                   <button
-                    onClick={() => handleDeleteProduct(product.productName)}
+                    onClick={() => handleDeleteProduct(product.name)}
                     className="text-[#7E84A3] hover:text-[#3d404e] transition-colors"
                   >
                     <DelectIcon />
