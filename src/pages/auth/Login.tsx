@@ -1,20 +1,25 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RoutePaths } from "../../routes/RoutesPath";
 import { Check, Facebook, Google } from "../../assets/svg/general";
 import { FormEvent, useState } from "react";
 import { ClipLoader } from "react-spinners";
 import AuthHeader from "../../components/auth/AuthHeader";
+import Cookies from "js-cookie";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const navigate = useNavigate();
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
+    Cookies.set("accessToken", "1234");
     setTimeout(() => {
       console.log("email: " + email, "password: " + password);
+      navigate(RoutePaths.DASHBOARD);
       setLoading(false);
     }, 1000);
   };

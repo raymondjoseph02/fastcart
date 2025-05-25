@@ -23,6 +23,7 @@ import KnowledgeBase from "../pages/knowledgeBase/KnowledgeBase";
 import GettingStarted from "../pages/knowledgeBase/GettingStarted";
 import PersonalSettings from "../pages/settings/PersonalSettings";
 import GlobalSettings from "../pages/settings/GlobalSettings";
+import AuthGuard from "../guards/AuthGuard";
 
 export const routes = createBrowserRouter([
   {
@@ -31,7 +32,11 @@ export const routes = createBrowserRouter([
   },
   {
     path: RoutePaths.ROOT,
-    element: <DashboardLayout />,
+    element: (
+      <AuthGuard>
+        <DashboardLayout />
+      </AuthGuard>
+    ),
     children: [
       {
         path: RoutePaths.DASHBOARD,
@@ -117,7 +122,6 @@ export const routes = createBrowserRouter([
   },
   {
     path: "/auth",
-    element: <></>,
     children: [
       {
         path: RoutePaths.LOG_IN,
