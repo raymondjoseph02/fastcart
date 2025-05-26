@@ -21,31 +21,36 @@ function KnowledgeBase() {
         <Card
           imageSrc={GettingStarted}
           title="Getting Started"
-          li1="Guide to get started faster"
-          li2="Video tutorials for beginners"
-          li3="Moving to Bolt system"
-        />
+          listItems={[
+           "Guide to get started faster",
+           "Video tutorials for beginners",
+           "Moving to Bolt system"
+        ]}/>
         <Card
           imageSrc={PersonalSettings}
           title="Personal Settings"
-          li1="Setting up your profile"
-          li2="Changing business name"
-          li3="Changing email address"
+          listItems={[
+           "Setting up your profile",
+           "Changing business name",
+           "Changing email address"
+        ]}
         />
         <Card
           imageSrc={Billing}
           title="Billing"
-          li1="Payment declined"
-          li2="Get a refund"
-          li3="Subscriptions"
-        />
+          listItems={[
+           "Payment declined",
+           "Get a refund",
+           "Subscriptions"
+        ]}/>
         <Card
           imageSrc={Commerce}
           title="Commerce"
-          li1="Add products"
-          li2="Selling guide"
-          li3="Create categories"
-        />
+          listItems={[
+           "Add products",
+           "Selling guide",
+           "Create categories"
+        ]}/>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 justify-between gap-7">
         <BigCard
