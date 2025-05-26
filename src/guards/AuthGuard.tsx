@@ -15,7 +15,8 @@ export function AuthGuard({ children }: AuthGuardProps) {
     return location.pathname !== "/" ? (
       <Navigate to="/" state={{ from: location }} replace />
     ) : (
-      <Login />
+      <Login
+       />
     );
   }
 

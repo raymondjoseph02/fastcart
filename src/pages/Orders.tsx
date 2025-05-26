@@ -8,7 +8,6 @@ import { Heading } from "../common/Heading";
 type PaymentStatus = "Paid" | "Pending";
 
 const ITEMS_PER_PAGE = 14;
-
 const Orders: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");

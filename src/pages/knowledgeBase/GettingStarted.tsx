@@ -41,7 +41,7 @@ function GettingStarted() {
         {showSidebar ? "Close" : "Menu"}
       </button>
       <div
-        className={`max-w-90 bg-gray-50 z-40 sm:sticky sm:top-0 sm:h-screen ${
+        className={`max-w-90 bg-gray-50 z-40 sm:sticky sm:top-0 sm:h-19 ${
           showSidebar ? "absolute top-0 left-0 h-screen w-72 p-4" : "hidden"
         } sm:block`}
       >
@@ -57,7 +57,7 @@ function GettingStarted() {
               key={index}
               onClick={() => {
                 setActiveIndex(index);
-                setShowSidebar(false); // hide sidebar after click on mobile
+                setShowSidebar(false); 
               }}
               className={`h-11 w-full rounded-md flex items-center px-5 cursor-pointer ${
                 activeIndex === index ? "bg-primary-300 text-white" : ""
