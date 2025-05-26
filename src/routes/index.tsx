@@ -107,7 +107,7 @@ export const routes = createBrowserRouter([
         element: <KnowledgeBase />,
       },
       {
-        path: `${RoutePaths.KNOWLEDGE_BASE}/:getting-started`,
+        path: `${RoutePaths.KNOWLEDGE_BASE}/getting-started`,
         element: <GettingStarted />,
       },
       {

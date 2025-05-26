@@ -1,24 +1,40 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { RoutePaths } from "../../routes/RoutesPath";
 import { Facebook, Google } from "../../assets/svg/general";
 import { FormEvent, useState } from "react";
 import { ClipLoader } from "react-spinners";
 import AuthHeader from "../../components/auth/AuthHeader";
+import { signUp }from "../../api/auth/signUp";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const Navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-
+  const [accessToken, setAccessToken] = useState(Cookies.get("accessToken") || "");
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
-      console.log("email: " + email, "password: " + password);
-      setLoading(false);
-    }, 1000);
+    signUp(email, password, setAccessToken)
+      .then(() => {
+        Cookies.set("accessToken", accessToken, {
+          expires: 7, // Set cookie to expire in 7 days
+          secure: true, // Use secure cookies in production
+          sameSite: "Strict", // Prevent CSRF attacks
+        });
+        setLoading(false);
+        // alert("User signed up successfully");
+        Navigate(RoutePaths.DASHBOARD, { replace: true });
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.error("Error signing up:", error);
+        alert("Error signing up: " + error.message);
+      } );
   };
-
+  
   return (
     <div className="w-full sm:min-h-screen flex justify-center items-center p-5">
       <div className="shadow-bg-auth max-w-[540px] w-full rounded-md bg-white px-6 py-10 sm:px-[60px] sm:py-12  ">
